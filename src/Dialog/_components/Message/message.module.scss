@@ -1,0 +1,108 @@
+.message{
+  display: flex;
+  flex-direction: column;
+
+  padding: 16px 20px;
+  gap: 16px;
+  border-radius: 5px;
+  width: auto;
+  max-width: 390px;
+  height: 100%;
+  margin: 0 auto;
+
+  box-shadow: rgba(23, 16, 16, 0.95) 0 2px 20px 0;
+  background-color: rgb(34, 34, 34);
+}
+
+
+
+
+.content{
+  flex: 1;
+  text-align: left;
+  color: #fff;
+  width: 100%;
+}
+
+.status-success{
+  //background: var(--success-color, var(--default-success-color));
+  color: #fff;
+}
+
+.status-warning{
+  //background: var(--warning-color, var(--default-warning-color));
+  color: #fff;
+}
+
+.status-error{
+  //background: var(--error-color, var(--default-error-color));
+  color: #fff;
+}
+.status-info{
+  //background: var(--info-color, var(--default-info-color));
+  color: #fff;
+}
+
+.header-wrapper{
+  width: 100%;
+  height: 25px;
+  flex: 0 0 auto;
+
+  display: flex;
+  column-gap: 5px;
+  justify-content: center;
+  align-items: center;
+}
+.title{
+  font-size: 20px;
+  line-height: 100%;
+}
+
+.header-wrapper > svg{
+  flex: 0 0 auto;
+  width: 18px;
+}
+
+.status-success .header-wrapper{
+  color: var(--success-color, var(--default-success-color));
+}
+
+.status-warning .header-wrapper{
+  color: var(--warning-color, var(--default-warning-color));
+}
+
+.status-danger .header-wrapper{
+  color: var(--danger-color, var(--default-danger-color));
+}
+
+.status-info .header-wrapper{
+  color: var(--info-color, var(--default-info-color));
+}
+
+
+.statusCode{
+  font-size: 12px;
+  color: #9d9a9a;
+}
+
+
+.buttonGroup{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  gap: 16px;
+}
+
+.button{
+  flex: 0 0 auto;
+}
+
+.customButton{
+  flex: 1;
+  max-width: 50%;
+}
+
+.customTextField {
+  flex: 1;
+}
