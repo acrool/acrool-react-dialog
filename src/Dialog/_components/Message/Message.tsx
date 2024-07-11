@@ -80,7 +80,7 @@ const Message = ({
             {
                 className: styles.customButton,
                 onClick: onClose,
-                status: status,
+                color: status,
                 children: 'OK',
             }
         ];
