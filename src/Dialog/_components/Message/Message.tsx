@@ -92,15 +92,14 @@ const Message = ({
             {currButtons?.map((row) => {
                 const key = ulid().toLowerCase();
                 
-                console.log('row', row);
 
                 return <React.Fragment key={key}>
                     {renderButton({
                         ...row,
                         className: styles.customButton,
-                        onClick: () => {
+                        onClick: (e) => {
                             if(row.onClick){
-                                row.onClick(isConfirm ? value: undefined);
+                                row.onClick(e, isConfirm ? value: undefined);
                             }
                             onClose();
                         },

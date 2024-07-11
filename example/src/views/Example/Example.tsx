@@ -77,12 +77,12 @@ const Example = () => {
                         buttons: [
                             {
                                 children: 'Delete',
-                                status: EStatus.danger,
-                                onClick: value => console.log(`confirm value: ${value}`)
+                                color: 'danger',
+                                onClick: (e, confirmValue) => console.log(confirmValue)
                             },
                             {
                                 children: 'Cancel',
-                                status: 'grayDanger'
+                                color: 'gray'
                             },
                         ],
                     }),

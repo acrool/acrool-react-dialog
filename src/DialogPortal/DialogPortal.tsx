@@ -55,11 +55,11 @@ const DialogPortal: React.FC<IDialogPortalProps> = (props) => {
     const renderItems = () => {
 
         return items.map(item => {
-            const {message,...itemArg} = item;
+            const {message, key,...itemArg} = item;
             return <Dialog
-                key={item.key}
+                key={key}
                 isVisible={true}
-                onEntered={() => hidden(item.key)}
+                onEntered={() => hidden(key)}
                 timeout={props.defaultTimeout || defaultTimeout}
                 renderButton={props.renderButton}
                 renderTextField={props.renderTextField}
