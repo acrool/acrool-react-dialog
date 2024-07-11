@@ -1,4 +1,4 @@
-import {ReactNode} from "react";
+import {ReactNode} from 'react';
 
 export enum EStatus {
     success = 'success',
@@ -10,8 +10,8 @@ export enum EStatus {
 export interface IButton {
     className?: string
     children: ReactNode,
-    type?: 'primary'|'danger'|'gray',
-    onClick?: () => void,
+    status?: string,
+    onClick?: (e?: React.MouseEvent, confirmValue?: string) => void,
     hotKey?: 'y'|'n'|'enter',
 }
 

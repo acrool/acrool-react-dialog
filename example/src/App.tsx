@@ -23,7 +23,7 @@ function App() {
                         return <Button
                             className={args.className}
                             children={args.children}
-                            color={args.type}
+                            color={args.status}
                             onClick={args.onClick}
                             isBlock
                             size="md"

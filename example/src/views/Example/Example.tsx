@@ -1,8 +1,6 @@
-import {EStatus, dialog} from '@acrool/react-dialog';
+import {dialog, EStatus} from '@acrool/react-dialog';
 import AcroolTable from '@acrool/react-table';
 import Button from '../../components/Button';
-
-
 
 
 const Example = () => {
@@ -79,10 +77,13 @@ const Example = () => {
                         buttons: [
                             {
                                 children: 'Delete',
-                                type: 'danger',
+                                status: EStatus.danger,
                                 onClick: value => console.log(`confirm value: ${value}`)
                             },
-                            {children: 'Cancel', type: 'gray'},
+                            {
+                                children: 'Cancel',
+                                status: 'grayDanger'
+                            },
                         ],
                     }),
                     field: {

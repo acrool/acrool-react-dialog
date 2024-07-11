@@ -80,7 +80,7 @@ const Message = ({
             {
                 className: styles.customButton,
                 onClick: onClose,
-                type: status,
+                status: status,
                 children: 'OK',
             }
         ];
@@ -91,6 +91,8 @@ const Message = ({
         >
             {currButtons?.map((row) => {
                 const key = ulid().toLowerCase();
+                
+                console.log('row', row);
 
                 return <React.Fragment key={key}>
                     {renderButton({
