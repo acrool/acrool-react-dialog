@@ -1,5 +1,5 @@
 import {ReactNode} from 'react';
-
+export type TButtonColor = 'success'|'info'|'warning'|'danger'|'gray'
 export enum EStatus {
     success = 'success',
     info = 'info',
@@ -10,7 +10,7 @@ export enum EStatus {
 export interface IButton {
     className?: string
     children: ReactNode,
-    status?: string,
+    color?: TButtonColor,
     onClick?: (e?: React.MouseEvent, confirmValue?: string) => void,
     hotKey?: 'y'|'n'|'enter',
 }
