@@ -35,7 +35,7 @@ export interface IItem {
 }
 
 export type TShow = (newItem: Omit<IItem, 'key'>) => void;
-export type TStatusShow = (newItem: Omit<IItem, 'key'|'code'|'path'|'buttons'>) => void;
+export type TStatusShow = (newItem: Omit<IItem, 'key'|'status'>) => void;
 interface TShowStatus {
     success: TStatusShow,
     warning: TStatusShow,
