@@ -99,7 +99,10 @@ const Message = ({
                         className: styles.customButton,
                         onClick: (e) => {
                             if(row.onClick){
-                                row.onClick(e, isConfirm ? value: undefined);
+                                const res = row.onClick(e, isConfirm ? value: undefined);
+                                if(!res) {
+                                    return;
+                                }
                             }
                             onClose();
                         },
