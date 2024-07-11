@@ -100,7 +100,7 @@ const Message = ({
                         onClick: (e) => {
                             if(row.onClick){
                                 const res = row.onClick(e, isConfirm ? value: undefined);
-                                if(!res) {
+                                if(res === false) {
                                     return;
                                 }
                             }
