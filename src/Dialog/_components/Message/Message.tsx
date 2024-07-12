@@ -84,21 +84,12 @@ const Message = ({
         const currButtons: Array<IButton> = buttons ?? [
             {
                 className: styles.customButton,
-                onClick: (e) => {
-                    if(onClick){
-                        const res = onClick(e, isEnableConfirmField ? value: undefined);
-                        if(res === false) {
-                            return;
-                        }
-                    }
-                    onClose();
-                },
+                onClick,
                 color: statusTheme.mainBtnColor,
                 children: i18n('com.dialog.ok'),
             },
             isConfirm ? {
                 className: styles.customButton,
-                onClick: () => onClose(),
                 color: 'gray',
                 children: i18n('com.dialog.cancel'),
             }: undefined,

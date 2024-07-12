@@ -98,7 +98,7 @@ const Example = () => {
                             code: 'SYS_ERR_500',
                             path: 'auth/sign',
                             confirmPlaceholder: 'type your team name',
-                            onClick: (e, confirmValue) => console.log(confirmValue)
+                            onClick: (e, confirmValue) => confirmValue === 'y'
                         }),
                     field: {
                         name: <Button color="grayDanger" size="md">Confirm</Button>,
