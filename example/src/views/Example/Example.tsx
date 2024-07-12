@@ -20,11 +20,20 @@ const Example = () => {
             data={[
                 {
                     id: 1,
-                    onClickRow: () => dialog({
-                        message: 'Good afternoon, Imagine how are you doing today?',
-                        code: '222',
-
-                    }),
+                    onClickRow: () => {
+                        dialog({
+                            message: 'step1 test dialog',
+                            code: 'TEST1',
+                        });
+                        dialog.danger({
+                            message: 'step2 test dialog',
+                            code: 'TEST2',
+                        });
+                        dialog.warning({
+                            message: 'step3 test dialog',
+                            code: 'TEST3',
+                        });
+                    },
                     field: {
                         name: 'Default',
                         use: 'dialog({message: \'Good afternoon, Imagine how are you doing today?\'})',

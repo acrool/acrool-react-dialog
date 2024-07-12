@@ -14,7 +14,7 @@ import {defaultTimeout, rootId} from '../config';
 export let dialog: TShowMulti;
 
 const DialogPortal: React.FC<IDialogPortalProps> = (props) => {
-    const [items, setItems] = useState<IItem[]>([]);
+    const [item, setItem] = useState<IItem>();
 
     // set global
     useEffect(() => {
@@ -33,7 +33,7 @@ const DialogPortal: React.FC<IDialogPortalProps> = (props) => {
     const show: TShow = useCallback((newItem) => {
         const key = ulid().toLowerCase();
 
-        setItems(prevItems => [{key, ...newItem}, ...prevItems, ]);
+        setItem({key, ...newItem});
     }, []);
 
 
@@ -42,37 +42,31 @@ const DialogPortal: React.FC<IDialogPortalProps> = (props) => {
      * @param key
      */
     const hidden: THidden = useCallback((key) => {
-        setItems(prevItems => {
-            const index = prevItems.findIndex(row => row.key === key);
-            return removeByIndex(prevItems, index);
-        });
+        setItem(undefined);
     }, []);
 
 
     /**
      * 渲染項目
      */
-    const renderItems = () => {
-
-        return items.map(item => {
-            const {message, key,...itemArg} = item;
-            return <Dialog
-                key={key}
-                isVisible={true}
-                onEntered={() => hidden(key)}
-                timeout={props.defaultTimeout || defaultTimeout}
-                renderButton={props.renderButton}
-                renderTextField={props.renderTextField}
-                {...itemArg}
-            >
-                {message}
-            </Dialog>;
-        });
+    const renderItem = () => {
+        const {message, key,...itemArg} = item;
+        return <Dialog
+            key={key}
+            isVisible={true}
+            onEntered={() => hidden(key)}
+            timeout={props.defaultTimeout || defaultTimeout}
+            renderButton={props.renderButton}
+            renderTextField={props.renderTextField}
+            {...itemArg}
+        >
+            {message}
+        </Dialog>;
     };
 
     return (
         <DialogWithPortal id={props.id || rootId}>
-            {renderItems()}
+            {item && renderItem()}
         </DialogWithPortal>
     );
 };
