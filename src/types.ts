@@ -34,8 +34,27 @@ export interface IItem {
     confirm?: string
 }
 
-export type TShow = (newItem: Omit<IItem, 'key'>) => void;
-export type TStatusShow = (newItem: Omit<IItem, 'key'|'status'>) => void;
+export type TShow = (args: IShowArgs) => void;
+export type TStatusShow = (message: ReactNode, args?: IStatusShowArgs) => void;
+
+type TOnButtonClick = (confirmValue: string) => void
+
+interface IShowArgs extends IStatusShowArgs{
+    status?: EStatus,
+    message: ReactNode,
+}
+
+interface IStatusShowArgs {
+    // key: string,
+
+    code?: string,
+    path?: string,
+
+    onClick?: TOnButtonClick
+    buttons?: IButton[],
+    confirm?: string
+}
+
 interface TShowStatus {
     success: TStatusShow,
     warning: TStatusShow,

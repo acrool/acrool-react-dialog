@@ -15,7 +15,6 @@ function App() {
             <div className="App">
                 <Banner/>
                 <Example/>
-                <div className="team-name">sdsd</div>
 
                 <DialogPortal
                     defaultTimeout={4}

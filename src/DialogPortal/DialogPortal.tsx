@@ -19,10 +19,11 @@ const DialogPortal: React.FC<IDialogPortalProps> = (props) => {
     // set global
     useEffect(() => {
         dialog = show as TShowMulti;
-        dialog.success = (item) => show({...item, status: EStatus.success});
-        dialog.warning = (item) => show({...item, status: EStatus.warning});
-        dialog.danger = (item) => show({...item, status: EStatus.danger});
-        dialog.info = (item) => show({...item, status: EStatus.info});
+
+        dialog.success = (message, args) => show({...args, message, status: EStatus.success});
+        dialog.warning = (message, args) => show({...args, message, status: EStatus.warning});
+        dialog.danger = (message, args) => show({...args, message, status: EStatus.danger});
+        dialog.info = (message, args) => show({...args, message, status: EStatus.info});
     }, []);
 
 
@@ -30,10 +31,10 @@ const DialogPortal: React.FC<IDialogPortalProps> = (props) => {
      * 顯示 Dialog
      * @param newItem
      */
-    const show: TShow = useCallback((newItem) => {
+    const show: TShow = useCallback((args) => {
         const key = ulid().toLowerCase();
 
-        setItem({key, ...newItem});
+        setItem({key, ...args});
     }, []);
 
 
@@ -50,6 +51,7 @@ const DialogPortal: React.FC<IDialogPortalProps> = (props) => {
      * 渲染項目
      */
     const renderItem = () => {
+        console.log('item', item);
         const {message, key,...itemArg} = item;
         return <Dialog
             key={key}

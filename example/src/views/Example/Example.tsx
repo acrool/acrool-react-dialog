@@ -25,14 +25,8 @@ const Example = () => {
                             message: 'step1 test dialog',
                             code: 'TEST1',
                         });
-                        dialog.danger({
-                            message: 'step2 test dialog',
-                            code: 'TEST2',
-                        });
-                        dialog.warning({
-                            message: 'step3 test dialog',
-                            code: 'TEST3',
-                        });
+                        dialog.danger('step2 test dialog');
+                        dialog.warning('step3 test dialog');
                     },
                     field: {
                         name: 'Default',
@@ -41,8 +35,7 @@ const Example = () => {
                 },
                 {
                     id: 3,
-                    onClickRow: () => dialog.success({
-                        message: 'You have been logged in successfully',
+                    onClickRow: () => dialog.success('You have been logged in successfully',{
                         code: 'SYS_ERR_500',
                         path: 'auth/sign',
                     }),
@@ -53,7 +46,7 @@ const Example = () => {
                 },
                 {
                     id: 4,
-                    onClickRow: () => dialog.info({message: 'You have a new message'}),
+                    onClickRow: () => dialog.info('You have a new message'),
                     field: {
                         name: <Button color="info" size="md">Info</Button>,
                         use: 'dialog.info({message: \'You have a new message\'})',
@@ -61,7 +54,7 @@ const Example = () => {
                 },
                 {
                     id: 5,
-                    onClickRow: () => dialog.warning({message: 'Please check if your parameter settings are correct?'}),
+                    onClickRow: () => dialog.warning('Please check if your parameter settings are correct?'),
                     field: {
                         name: <Button color="warning" size="md">Warning</Button>,
                         use: 'dialog.warning({message: \'Please check if your parameter settings are correct?\'})',
@@ -69,7 +62,7 @@ const Example = () => {
                 },
                 {
                     id: 6,
-                    onClickRow: () => dialog.danger({message: 'Sorry, the account password you entered is wrong'}),
+                    onClickRow: () => dialog.danger('Sorry, the account password you entered is wrong'),
                     field: {
                         name: <Button color="danger" size="md">Danger</Button>,
                         use: 'dialog.danger({message: \'Sorry, the account password you entered is wrong\'})',
