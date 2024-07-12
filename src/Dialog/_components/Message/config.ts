@@ -31,4 +31,9 @@ export const themeMap: Record<EStatus, IStatusConfig> = {
         titleI18n: 'danger',
         elClass: styles.statusDanger,
     },
+    [EStatus.confirm]: {
+        icon: Icon.warning,
+        titleI18n: 'confirm',
+        elClass: styles.statusWarning,
+    },
 };

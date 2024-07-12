@@ -17,13 +17,12 @@ const Dialog = ({
     path,
     onClick,
     buttons,
-    confirm,
+    confirmPlaceholder,
     children,
     renderButton,
     renderTextField,
 }: IProps) => {
     const [visible, setVisible] = useState<EVisible>(EVisible.visible);
-
 
 
 
@@ -50,7 +49,7 @@ const Dialog = ({
                 path={path}
                 onClick={onClick}
                 buttons={buttons}
-                confirm={confirm}
+                confirmPlaceholder={confirmPlaceholder}
                 renderButton={renderButton}
                 renderTextField={renderTextField}
             >

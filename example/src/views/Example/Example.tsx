@@ -72,7 +72,7 @@ const Example = () => {
                         status: EStatus.danger,
                         code: 'SYS_ERR_500',
                         path: 'auth/sign',
-                        confirm: 'type your team name',
+                        confirmPlaceholder: 'type your team name',
                         buttons: [
                             {
                                 children: 'Delete',
@@ -87,6 +87,21 @@ const Example = () => {
                     }),
                     field: {
                         name: <Button color="grayDanger" size="md">Custom</Button>,
+                        use: 'dialog(\'You have been logged out successfully!\', {status: EStatus.success})',
+                    }
+                },
+                {
+                    id: 8,
+                    onClickRow: () => dialog.confirm(
+                        'Please enter the name of the team you want to delete click OK to delete. Make sure you know what you are doing.',
+                        {
+                            code: 'SYS_ERR_500',
+                            path: 'auth/sign',
+                            confirmPlaceholder: 'type your team name',
+                            onClick: (e, confirmValue) => console.log(confirmValue)
+                        }),
+                    field: {
+                        name: <Button color="grayDanger" size="md">Confirm</Button>,
                         use: 'dialog(\'You have been logged out successfully!\', {status: EStatus.success})',
                     }
                 },

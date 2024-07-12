@@ -24,6 +24,7 @@ const DialogPortal: React.FC<IDialogPortalProps> = (props) => {
         dialog.warning = (message, args) => show({...args, message, status: EStatus.warning});
         dialog.danger = (message, args) => show({...args, message, status: EStatus.danger});
         dialog.info = (message, args) => show({...args, message, status: EStatus.info});
+        dialog.confirm = (message, args) => show({...args, message, status: EStatus.confirm});
     }, []);
 
 
@@ -56,7 +57,6 @@ const DialogPortal: React.FC<IDialogPortalProps> = (props) => {
             key={key}
             isVisible={true}
             onEntered={() => hidden(key)}
-            timeout={props.defaultTimeout || defaultTimeout}
             renderButton={props.renderButton}
             renderTextField={props.renderTextField}
             {...itemArg}

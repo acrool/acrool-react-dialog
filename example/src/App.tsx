@@ -17,7 +17,6 @@ function App() {
                 <Example/>
 
                 <DialogPortal
-                    defaultTimeout={4}
                     renderButton={(args) => {
                         return <Button
                             className={args.className}

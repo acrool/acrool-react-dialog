@@ -1,10 +1,11 @@
 import {ReactNode} from 'react';
-export type TButtonColor = 'success'|'info'|'warning'|'danger'|'gray'
+export type TButtonColor = 'success'|'info'|'warning'|'danger'|'gray'|'confirm'
 export enum EStatus {
     success = 'success',
     info = 'info',
     warning = 'warning',
     danger = 'danger',
+    confirm = 'confirm',
 }
 
 export interface IButton {
@@ -52,7 +53,7 @@ interface IStatusShowArgs {
 
     onClick?: TOnButtonClick
     buttons?: IButton[],
-    confirm?: string
+    confirmPlaceholder?: string
 }
 
 interface TShowStatus {
@@ -60,6 +61,7 @@ interface TShowStatus {
     warning: TStatusShow,
     info: TStatusShow,
     danger: TStatusShow,
+    confirm: TStatusShow,
 }
 
 export type TShowMulti = TShow & TShowStatus;

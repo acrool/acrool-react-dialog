@@ -4,9 +4,9 @@ import styles from './message.module.scss';
 import {themeMap} from './config';
 import {IMessageProps} from '../../types';
 import {ulid} from 'ulid';
-import {IButton, ITextField} from '../../../types';
+import {EStatus, IButton, ITextField} from '../../../types';
 import {clsx} from 'clsx';
-import useLocale from "../../../locales";
+import useLocale from '../../../locales';
 
 
 interface IProps extends IMessageProps{
@@ -14,7 +14,6 @@ interface IProps extends IMessageProps{
     renderButton: (args: IButton) => ReactNode
     renderTextField: (args: ITextField) => ReactNode
     onClose?: (confirmValue?: string) => void,
-    isConfirm?: boolean
 }
 
 /**
@@ -29,24 +28,25 @@ const Message = ({
     path,
     onClick,
     buttons,
-    confirm,
+    confirmPlaceholder,
     children,
     renderButton,
     renderTextField,
 }: IProps) => {
     const statusTheme = typeof status !== 'undefined'? themeMap[status]: undefined;
+    const isConfirm = status === EStatus.confirm;
     const [value, onChange] = useState<string>('');
 
     const {i18n} = useLocale();
 
-    const isConfirm = typeof confirm !== 'undefined';
+    const isEnableConfirmField = typeof confirmPlaceholder !== 'undefined';
 
 
     /**
      * 渲染詢問對話框
      */
     const renderConfirm = () => {
-        if(!isConfirm){
+        if(!isEnableConfirmField){
             return null;
         }
 
@@ -55,7 +55,7 @@ const Message = ({
             value,
             onChange,
             defaultValue: '',
-            placeholder: confirm
+            placeholder: confirmPlaceholder
         });
     };
 
@@ -81,48 +81,66 @@ const Message = ({
      */
     const renderButtons = () => {
 
-        const currButtons = buttons ?? [
+        const currButtons: Array<undefined|IButton> = buttons ?? [
             {
                 className: styles.customButton,
                 onClick: (e) => {
                     if(onClick){
-                        const res = onClick(e, isConfirm ? value: undefined);
+                        const res = onClick(e, isEnableConfirmField ? value: undefined);
                         if(res === false) {
                             return;
                         }
                     }
                     onClose();
                 },
-                color: status,
+                color: isConfirm ? 'warning': status,
                 children: i18n('com.dialog.ok'),
-            }
+            },
+            isConfirm ? {
+                className: styles.customButton,
+                onClick: (e) => {
+                    if(onClick){
+                        const res = onClick(e, isEnableConfirmField ? value: undefined);
+                        if(res === false) {
+                            return;
+                        }
+                    }
+                    onClose();
+                },
+                color: 'gray',
+                children: i18n('com.dialog.cancel'),
+            }: undefined,
         ];
+        
+        
 
 
         return <div
             className={styles.buttonGroup}
         >
-            {currButtons?.map((row) => {
-                const key = ulid().toLowerCase();
+            {currButtons
+                .filter(row => row)
+                .map((row) => {
+                    const key = ulid().toLowerCase();
                 
 
-                return <React.Fragment key={key}>
-                    {renderButton({
-                        ...row,
-                        className: styles.customButton,
-                        onClick: (e) => {
-                            if(row.onClick){
-                                const res = row.onClick(e, isConfirm ? value: undefined);
-                                if(res === false) {
-                                    return;
+                    return <React.Fragment key={key}>
+                        {renderButton({
+                            ...row,
+                            className: styles.customButton,
+                            onClick: (e) => {
+                                if(row.onClick){
+                                    const res = row.onClick(e, isEnableConfirmField ? value: undefined);
+                                    if(res === false) {
+                                        return;
+                                    }
                                 }
-                            }
-                            onClose();
-                        },
-                    })}
-                </React.Fragment>;
+                                onClose();
+                            },
+                        })}
+                    </React.Fragment>;
 
-            })}
+                })}
         </div>;
     };
 

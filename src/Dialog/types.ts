@@ -16,12 +16,11 @@ export interface IMessageProps {
     children: ReactNode
     onClick?: TOnButtonClick
     buttons?: IButton[]
-    confirm?: string,
+    confirmPlaceholder?: string,
     renderButton?: (args: IButton) => ReactNode
 }
 
 export interface IDialogProps extends IMessageProps{
     isVisible: boolean,
     onEntered: () => void,
-    timeout?: number,
 }
