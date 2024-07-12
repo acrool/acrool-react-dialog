@@ -30,8 +30,8 @@ export const themeMap: Record<EStatus, IStatusConfig> = {
         elClass: styles.statusInfo,
         mainBtnColor: 'info',
     },
-    [EStatus.danger]: {
-        icon: Icon.danger,
+    [EStatus.error]: {
+        icon: Icon.error,
         titleI18n: 'danger',
         elClass: styles.statusDanger,
         mainBtnColor: 'danger',

@@ -22,7 +22,7 @@ const Example = () => {
                     id: 1,
                     onClickRow: () => {
                         dialog({message: 'step1 test dialog', code: 'TEST1'});
-                        dialog.danger('step2 test dialog');
+                        // dialog.error('step2 test dialog');
                     },
                     field: {
                         name: 'Default',
@@ -59,7 +59,7 @@ const Example = () => {
                 },
                 {
                     id: 6,
-                    onClickRow: () => dialog.danger('Sorry, the account password you entered is wrong'),
+                    onClickRow: () => dialog.error('Sorry, the account password you entered is wrong'),
                     field: {
                         name: <Button color="danger" size="md">Danger</Button>,
                         use: 'dialog.danger(\'Sorry, the account password you entered is wrong\')',

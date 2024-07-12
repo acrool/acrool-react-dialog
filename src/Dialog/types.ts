@@ -3,7 +3,6 @@ import {ReactNode} from 'react';
 
 export enum EVisible {
     visible,
-    hiddenAction,
     hidden
 }
 
@@ -21,6 +20,5 @@ export interface IMessageProps {
 }
 
 export interface IDialogProps extends IMessageProps{
-    isVisible: boolean,
-    onEntered: () => void,
+    onExitComplete: () => void,
 }

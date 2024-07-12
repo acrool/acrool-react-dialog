@@ -1,11 +1,9 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import {ulid} from 'ulid';
-import {removeByIndex} from '../utils';
 import {EStatus, IItem, THidden, TShow, TShowMulti} from '../types';
 import DialogWithPortal from './DialogWithPortal';
 import Dialog from '../Dialog';
 import {IDialogPortalProps} from './types';
-import {defaultTimeout, rootId} from '../config';
+import {rootId} from '../config';
 
 
 /**
@@ -22,7 +20,7 @@ const DialogPortal: React.FC<IDialogPortalProps> = (props) => {
 
         dialog.success = (message, args) => show({...args, message, status: EStatus.success});
         dialog.warning = (message, args) => show({...args, message, status: EStatus.warning});
-        dialog.danger = (message, args) => show({...args, message, status: EStatus.danger});
+        dialog.error = (message, args) => show({...args, message, status: EStatus.error});
         dialog.info = (message, args) => show({...args, message, status: EStatus.info});
         dialog.confirm = (message, args) => show({...args, message, status: EStatus.confirm});
     }, []);
@@ -33,9 +31,8 @@ const DialogPortal: React.FC<IDialogPortalProps> = (props) => {
      * @param newItem
      */
     const show: TShow = useCallback((args) => {
-        const key = ulid().toLowerCase();
 
-        setItem({key, ...args});
+        setItem(args);
     }, []);
 
 
@@ -43,7 +40,7 @@ const DialogPortal: React.FC<IDialogPortalProps> = (props) => {
      * 隱藏 Dialog
      * @param key
      */
-    const hidden: THidden = useCallback((key) => {
+    const hidden: THidden = useCallback(() => {
         setItem(undefined);
     }, []);
 
@@ -51,12 +48,10 @@ const DialogPortal: React.FC<IDialogPortalProps> = (props) => {
     /**
      * 渲染項目
      */
-    const renderItem = () => {
-        const {message, key,...itemArg} = item;
+    const renderDialog = () => {
+        const {message, ...itemArg} = item;
         return <Dialog
-            key={key}
-            isVisible={true}
-            onEntered={() => hidden(key)}
+            onExitComplete={hidden}
             renderButton={props.renderButton}
             renderTextField={props.renderTextField}
             {...itemArg}
@@ -67,7 +62,7 @@ const DialogPortal: React.FC<IDialogPortalProps> = (props) => {
 
     return (
         <DialogWithPortal id={props.id || rootId}>
-            {item && renderItem()}
+            {item && renderDialog()}
         </DialogWithPortal>
     );
 };

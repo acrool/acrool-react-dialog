@@ -73,7 +73,6 @@
     "react": "^18.x",
     "react-dom": "^18.x",
     "typescript": "^4.9.3",
-    "ulid": "^2.3.0",
     "sass": "^1.77.1",
     "vite": "^4.2.0",
     "vite-plugin-dts": "^2.1.0",

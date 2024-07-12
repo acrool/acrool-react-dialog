@@ -4,7 +4,7 @@ export enum EStatus {
     success = 'success',
     info = 'info',
     warning = 'warning',
-    danger = 'danger',
+    error = 'error',
     confirm = 'confirm',
 }
 
@@ -25,7 +25,6 @@ export interface ITextField {
 }
 
 export interface IItem {
-    key: string,
     status?: EStatus,
     message: ReactNode,
 
@@ -60,11 +59,11 @@ interface TShowStatus {
     success: TStatusShow,
     warning: TStatusShow,
     info: TStatusShow,
-    danger: TStatusShow,
+    error: TStatusShow,
     confirm: TStatusShow,
 }
 
 export type TShowMulti = TShow & TShowStatus;
 
-export type THidden = (key: string) => void;
+export type THidden = () => void;
 

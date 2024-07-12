@@ -21,27 +21,18 @@ const Dialog = ({
     children,
     renderButton,
     renderTextField,
+    onExitComplete,
 }: IProps) => {
     const [visible, setVisible] = useState<EVisible>(EVisible.visible);
 
 
-
-    const handleHidden = useCallback(() => {
+    const handleHiddenAction = useCallback(() => {
         setVisible(EVisible.hidden);
     }, []);
 
-    const handleHiddenAction = useCallback(() => {
-        setVisible(EVisible.hiddenAction);
-    }, []);
-
-
-    if(visible === EVisible.hidden){
-        return null;
-    }
-
     
     return (
-        <MotionDrawer visible={visible} onExitComplete={handleHidden}>
+        <MotionDrawer visible={visible} onExitComplete={onExitComplete}>
             <Message
                 onClose={handleHiddenAction}
                 status={status}

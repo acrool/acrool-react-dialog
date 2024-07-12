@@ -3,7 +3,6 @@ import CSS from 'csstype';
 import styles from './message.module.scss';
 import {themeMap} from './config';
 import {IMessageProps} from '../../types';
-import {ulid} from 'ulid';
 import {EStatus, IButton, ITextField} from '../../../types';
 import {clsx} from 'clsx';
 import useLocale from '../../../locales';
@@ -85,7 +84,7 @@ const Message = ({
             {
                 className: styles.customButton,
                 onClick,
-                color: statusTheme.mainBtnColor,
+                color: statusTheme?.mainBtnColor,
                 children: i18n('com.dialog.ok'),
             },
             isConfirm ? {
@@ -103,11 +102,8 @@ const Message = ({
         >
             {currButtons
                 .filter(row => row)
-                .map((row) => {
-                    const key = ulid().toLowerCase();
-                
-
-                    return <React.Fragment key={key}>
+                .map((row, idx) => {
+                    return <React.Fragment key={`dialog_${idx}`}>
                         {renderButton({
                             ...row,
                             className: styles.customButton,
