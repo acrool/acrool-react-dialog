@@ -11,7 +11,7 @@ export interface IButton {
     className?: string
     children: ReactNode,
     color?: TButtonColor,
-    onClick?: (e?: React.MouseEvent, confirmValue?: string) => void,
+    onClick?: TOnButtonClick,
     hotKey?: 'y'|'n'|'enter',
 }
 
@@ -37,7 +37,7 @@ export interface IItem {
 export type TShow = (args: IShowArgs) => void;
 export type TStatusShow = (message: ReactNode, args?: IStatusShowArgs) => void;
 
-type TOnButtonClick = (confirmValue: string) => void
+export type TOnButtonClick = (e?: React.MouseEvent, confirmValue?: string) => false|void;
 
 interface IShowArgs extends IStatusShowArgs{
     status?: EStatus,

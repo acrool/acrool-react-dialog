@@ -5,7 +5,7 @@ import {ReactNode} from 'react';
 
 interface IStatusConfig {
     icon: () => ReactNode,
-    title: string,
+    titleI18n: string,
     elClass: string,
 }
 
@@ -13,22 +13,22 @@ interface IStatusConfig {
 export const themeMap: Record<EStatus, IStatusConfig> = {
     [EStatus.success]: {
         icon: Icon.success,
-        title: 'Success',
+        titleI18n: 'success',
         elClass: styles.statusSuccess,
     },
     [EStatus.warning]: {
         icon: Icon.warning,
-        title: 'Warning',
+        titleI18n: 'warning',
         elClass: styles.statusWarning,
     },
     [EStatus.info]: {
         icon: Icon.info,
-        title: 'Info',
+        titleI18n: 'info',
         elClass: styles.statusInfo,
     },
     [EStatus.danger]: {
         icon: Icon.danger,
-        title: 'Danger',
+        titleI18n: 'danger',
         elClass: styles.statusDanger,
     },
 };

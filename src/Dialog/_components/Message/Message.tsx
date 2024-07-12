@@ -6,6 +6,7 @@ import {IMessageProps} from '../../types';
 import {ulid} from 'ulid';
 import {IButton, ITextField} from '../../../types';
 import {clsx} from 'clsx';
+import useLocale from "../../../locales";
 
 
 interface IProps extends IMessageProps{
@@ -22,9 +23,11 @@ interface IProps extends IMessageProps{
 const Message = ({
     style,
     onClose,
+    title,
     status,
     code,
     path,
+    onClick,
     buttons,
     confirm,
     children,
@@ -33,6 +36,8 @@ const Message = ({
 }: IProps) => {
     const statusTheme = typeof status !== 'undefined'? themeMap[status]: undefined;
     const [value, onChange] = useState<string>('');
+
+    const {i18n} = useLocale();
 
     const isConfirm = typeof confirm !== 'undefined';
 
@@ -79,9 +84,17 @@ const Message = ({
         const currButtons = buttons ?? [
             {
                 className: styles.customButton,
-                onClick: onClose,
+                onClick: (e) => {
+                    if(onClick){
+                        const res = onClick(e, isConfirm ? value: undefined);
+                        if(res === false) {
+                            return;
+                        }
+                    }
+                    onClose();
+                },
                 color: status,
-                children: 'OK',
+                children: i18n('com.dialog.ok'),
             }
         ];
 
@@ -124,7 +137,7 @@ const Message = ({
             {statusTheme && (
                 <div className={styles.headerWrapper}>
                     {statusTheme.icon()}
-                    <span className={styles.title}>{statusTheme.title}</span>
+                    <span className={styles.title}>{title ?? i18n(`com.dialog.${statusTheme.titleI18n}`)}</span>
                 </div>
             )}
             {children && <div className={styles.content} dangerouslySetInnerHTML={{__html: children}}/>}

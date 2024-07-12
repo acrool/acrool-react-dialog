@@ -51,7 +51,6 @@ const DialogPortal: React.FC<IDialogPortalProps> = (props) => {
      * 渲染項目
      */
     const renderItem = () => {
-        console.log('item', item);
         const {message, key,...itemArg} = item;
         return <Dialog
             key={key}

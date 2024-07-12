@@ -21,12 +21,8 @@ const Example = () => {
                 {
                     id: 1,
                     onClickRow: () => {
-                        dialog({
-                            message: 'step1 test dialog',
-                            code: 'TEST1',
-                        });
+                        dialog({message: 'step1 test dialog', code: 'TEST1'});
                         dialog.danger('step2 test dialog');
-                        dialog.warning('step3 test dialog');
                     },
                     field: {
                         name: 'Default',
@@ -36,12 +32,13 @@ const Example = () => {
                 {
                     id: 3,
                     onClickRow: () => dialog.success('You have been logged in successfully',{
+                        onClick: () => console.log('xxx'),
                         code: 'SYS_ERR_500',
                         path: 'auth/sign',
                     }),
                     field: {
                         name: <Button color="success" size="md">Success</Button>,
-                        use: 'dialog.success({message: \'You have been logged in successfully\'})',
+                        use: 'dialog.success(\'You have been logged in successfully\')',
                     }
                 },
                 {
@@ -49,7 +46,7 @@ const Example = () => {
                     onClickRow: () => dialog.info('You have a new message'),
                     field: {
                         name: <Button color="info" size="md">Info</Button>,
-                        use: 'dialog.info({message: \'You have a new message\'})',
+                        use: 'dialog.info(\'You have a new message\')',
                     }
                 },
                 {
@@ -57,7 +54,7 @@ const Example = () => {
                     onClickRow: () => dialog.warning('Please check if your parameter settings are correct?'),
                     field: {
                         name: <Button color="warning" size="md">Warning</Button>,
-                        use: 'dialog.warning({message: \'Please check if your parameter settings are correct?\'})',
+                        use: 'dialog.warning(\'Please check if your parameter settings are correct?\')',
                     }
                 },
                 {
@@ -65,7 +62,7 @@ const Example = () => {
                     onClickRow: () => dialog.danger('Sorry, the account password you entered is wrong'),
                     field: {
                         name: <Button color="danger" size="md">Danger</Button>,
-                        use: 'dialog.danger({message: \'Sorry, the account password you entered is wrong\'})',
+                        use: 'dialog.danger(\'Sorry, the account password you entered is wrong\')',
                     }
                 },
                 {
@@ -90,7 +87,7 @@ const Example = () => {
                     }),
                     field: {
                         name: <Button color="grayDanger" size="md">Custom</Button>,
-                        use: 'dialog({message: \'You have been logged out successfully!\', status: EStatus.success})',
+                        use: 'dialog(\'You have been logged out successfully!\', {status: EStatus.success})',
                     }
                 },
 

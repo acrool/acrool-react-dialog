@@ -15,6 +15,7 @@ const Dialog = ({
     status,
     code,
     path,
+    onClick,
     buttons,
     confirm,
     children,
@@ -22,6 +23,8 @@ const Dialog = ({
     renderTextField,
 }: IProps) => {
     const [visible, setVisible] = useState<EVisible>(EVisible.visible);
+
+
 
 
     const handleHidden = useCallback(() => {
@@ -41,10 +44,11 @@ const Dialog = ({
     return (
         <MotionDrawer visible={visible} onExitComplete={handleHidden}>
             <Message
-                status={status} 
+                onClose={handleHiddenAction}
+                status={status}
                 code={code}
                 path={path}
-                onClose={handleHiddenAction}
+                onClick={onClick}
                 buttons={buttons}
                 confirm={confirm}
                 renderButton={renderButton}

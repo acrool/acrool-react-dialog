@@ -1,4 +1,4 @@
-import {EStatus, IButton} from '../types';
+import {EStatus, IButton, TOnButtonClick} from '../types';
 import {ReactNode} from 'react';
 
 export enum EVisible {
@@ -12,7 +12,9 @@ export interface IMessageProps {
     code?: string,
     path?: string,
     status?: EStatus,
+    title?: string,
     children: ReactNode
+    onClick?: TOnButtonClick
     buttons?: IButton[]
     confirm?: string,
     renderButton?: (args: IButton) => ReactNode
