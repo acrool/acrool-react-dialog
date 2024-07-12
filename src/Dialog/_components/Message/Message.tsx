@@ -81,7 +81,7 @@ const Message = ({
      */
     const renderButtons = () => {
 
-        const currButtons: Array<undefined|IButton> = buttons ?? [
+        const currButtons: Array<IButton> = buttons ?? [
             {
                 className: styles.customButton,
                 onClick: (e) => {
@@ -93,20 +93,12 @@ const Message = ({
                     }
                     onClose();
                 },
-                color: isConfirm ? 'warning': status,
+                color: statusTheme.mainBtnColor,
                 children: i18n('com.dialog.ok'),
             },
             isConfirm ? {
                 className: styles.customButton,
-                onClick: (e) => {
-                    if(onClick){
-                        const res = onClick(e, isEnableConfirmField ? value: undefined);
-                        if(res === false) {
-                            return;
-                        }
-                    }
-                    onClose();
-                },
+                onClick: () => onClose(),
                 color: 'gray',
                 children: i18n('com.dialog.cancel'),
             }: undefined,

@@ -1,5 +1,5 @@
 import {ReactNode} from 'react';
-export type TButtonColor = 'success'|'info'|'warning'|'danger'|'gray'|'confirm'
+export type TButtonColor = 'success'|'info'|'warning'|'danger'|'gray'
 export enum EStatus {
     success = 'success',
     info = 'info',
