@@ -4,6 +4,7 @@ import ModalWithPortal from './ModalWithPortal';
 import DialogWrapper from './DialogWrapper';
 import {IButton, ITextField} from './types';
 import {rootId} from './config';
+import styles from './dialog.module.scss';
 
 
 /**
@@ -68,7 +69,10 @@ const Dialog = (props: IProps) => {
 
     console.log('args', item);
     return (
-        <ModalWithPortal id={props.id || rootId}>
+        <ModalWithPortal
+            id={props.id || rootId}
+            className={styles.root}
+        >
             {item && renderDialog()}
         </ModalWithPortal>
     );
