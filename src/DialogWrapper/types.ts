@@ -1,10 +1,6 @@
 import {EStatus, IButton, TOnButtonClick} from '../types';
 import {ReactNode} from 'react';
 
-export enum EVisible {
-    visible,
-    hidden
-}
 
 
 export interface IMessageProps {
@@ -19,6 +15,3 @@ export interface IMessageProps {
     renderButton?: (args: IButton) => ReactNode
 }
 
-export interface IDialogProps extends IMessageProps{
-    onExitComplete: () => void,
-}

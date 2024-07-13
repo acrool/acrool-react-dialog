@@ -1,6 +1,5 @@
 import {AnimatePresence, motion} from 'framer-motion';
 import {ReactNode} from 'react';
-import {EVisible} from '../types';
 import styles from './motion-drawer.module.scss';
 
 
@@ -10,8 +9,8 @@ const spring = {
 
 
 interface IProps {
-    visible: EVisible
-    onExitComplete?: () => void
+    isVisible: boolean
+    onExitComplete: () => void
     children: ReactNode
 }
 
@@ -36,13 +35,13 @@ const modalVariantsItem = {
  * @param children
  */
 const MotionRightDrawer = ({
-    visible,
+    isVisible,
     onExitComplete,
     children,
 }: IProps) => {
     return <>
         <AnimatePresence onExitComplete={onExitComplete}>
-            {visible === EVisible.visible &&
+            {isVisible &&
                 <motion.div
                     className={styles.motionMaskWrapper}
                     key="dialog"

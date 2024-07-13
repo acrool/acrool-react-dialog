@@ -1,9 +1,9 @@
-import React, {useCallback, useEffect, useState} from 'react';
-import {EStatus, IItem, THidden, TShow, TShowMulti} from '../types';
-import DialogWithPortal from './DialogWithPortal';
-import Dialog from '../Dialog';
-import {IDialogPortalProps} from './types';
-import {rootId} from '../config';
+import React, {ReactNode, useCallback, useEffect, useState} from 'react';
+import {EStatus, IItem, THidden, TShow, TShowMulti} from './types';
+import ModalWithPortal from './ModalWithPortal';
+import DialogWrapper from './DialogWrapper';
+import {IButton, ITextField} from './types';
+import {rootId} from './config';
 
 
 /**
@@ -11,7 +11,13 @@ import {rootId} from '../config';
  */
 export let dialog: TShowMulti;
 
-const DialogPortal: React.FC<IDialogPortalProps> = (props) => {
+interface IProps {
+    id?: string
+    renderButton?: (args: IButton) => ReactNode;
+    renderTextField?: (args: ITextField) => ReactNode;
+}
+
+const Dialog = (props: IProps) => {
     const [item, setItem] = useState<IItem>();
 
     // set global
@@ -37,7 +43,7 @@ const DialogPortal: React.FC<IDialogPortalProps> = (props) => {
 
 
     /**
-     * 隱藏 Dialog
+     * 刪除 Dialog 在 Dom 中
      * @param key
      */
     const hidden: THidden = useCallback(() => {
@@ -50,21 +56,22 @@ const DialogPortal: React.FC<IDialogPortalProps> = (props) => {
      */
     const renderDialog = () => {
         const {message, ...itemArg} = item;
-        return <Dialog
+        return <DialogWrapper
             onExitComplete={hidden}
             renderButton={props.renderButton}
             renderTextField={props.renderTextField}
             {...itemArg}
         >
             {message}
-        </Dialog>;
+        </DialogWrapper>;
     };
 
+    console.log('args', item);
     return (
-        <DialogWithPortal id={props.id || rootId}>
+        <ModalWithPortal id={props.id || rootId}>
             {item && renderDialog()}
-        </DialogWithPortal>
+        </ModalWithPortal>
     );
 };
 
-export default DialogPortal;
+export default Dialog;

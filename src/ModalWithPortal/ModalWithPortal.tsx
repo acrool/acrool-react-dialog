@@ -21,7 +21,7 @@ interface IState {}
 /**
  * 將內容傳送到外部Body內的方法
  */
-class DialogWithPortal extends React.Component<IProps, IState> {
+class ModalWithPortal extends React.Component<IProps, IState> {
     el: HTMLElement;
     portal?: Component;
 
@@ -73,4 +73,4 @@ class DialogWithPortal extends React.Component<IProps, IState> {
 
 }
 
-export default DialogWithPortal;
+export default ModalWithPortal;
