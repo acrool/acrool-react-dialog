@@ -36,20 +36,11 @@
   padding: 10px 0;
 }
 
-.status-success{
+.status-success, .status-error, .status-info, .status-warning{
   color: #fff;
 }
 
-.status-warning{
-  color: #fff;
-}
 
-.status-error{
-  color: #fff;
-}
-.status-info{
-  color: #fff;
-}
 
 .header-wrapper{
   width: 100%;
@@ -91,6 +82,7 @@
 .statusCode{
   font-size: 12px;
   color: #9d9a9a;
+  text-align: center;
 }
 
 
