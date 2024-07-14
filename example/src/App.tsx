@@ -17,22 +17,22 @@ function App() {
                 <Example/>
 
                 <DialogPortal
-                    renderButton={(args) => {
-                        return <Button
-                            className={args.className}
-                            children={args.children}
-                            color={args.color}
-                            onClick={args.onClick}
-                            isBlock
-                            size="md"
-                        />;
-                    }}
-                    renderTextField={(args) => {
-                        return <TextField
-                            {...args}
-                            isAutoFocus
-                        />;
-                    }}
+                    // renderButton={(args) => {
+                    //     return <Button
+                    //         className={args.className}
+                    //         children={args.children}
+                    //         color={args.color}
+                    //         onClick={args.onClick}
+                    //         isBlock
+                    //         size="md"
+                    //     />;
+                    // }}
+                    // renderTextField={(args) => {
+                    //     return <TextField
+                    //         {...args}
+                    //         isAutoFocus
+                    //     />;
+                    // }}
                 />
 
             </div>

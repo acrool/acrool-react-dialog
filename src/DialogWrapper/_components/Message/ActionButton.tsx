@@ -9,7 +9,7 @@ import styles from './message.module.scss';
 interface IProps{
     style?: CSS.Properties,
     args: IButton
-    renderButton: (args: IButton) => ReactNode
+    renderButton?: (args: IButton) => ReactNode
     onClose?: (confirmValue?: string) => void,
     confirmValue?: string,
 }
@@ -23,10 +23,14 @@ const ActionButton = ({
     onClose,
     renderButton,
 }: IProps) => {
+
+    const {hotKey: currentHotKey, ...buttonArgs} = args;
+
+
     const generateClick = (hotKey?: string) => {
         return () => {
 
-            if(!hotKey || args.hotKey === hotKey){
+            if(!hotKey || args.hotKey === currentHotKey){
                 if(args.onClick) {
                     const res = args.onClick(undefined, confirmValue);
                     if(res === false) {
@@ -44,11 +48,19 @@ const ActionButton = ({
     useHotkeys('n', generateClick('n'), [args.hotKey]);
 
 
+    if(!renderButton){
+        return <button type="button" 
+            className={styles.customButton}
+            {...buttonArgs}
+            onClick={generateClick()}
+        />; 
+    }
+    
 
     return <>
         {renderButton({
             className: styles.customButton,
-            ...args,
+            ...buttonArgs,
             onClick: generateClick(),
         })}
     </>;

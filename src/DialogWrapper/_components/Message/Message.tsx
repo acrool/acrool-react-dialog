@@ -56,8 +56,17 @@ const Message = ({
             return null;
         }
 
+        if(!renderTextField){
+            return <input type="text"
+                className={styles.textField}
+                value={value}
+                onChange={e => onChange(e.target.value)}
+                placeholder={confirmPlaceholder}
+            />;
+        }
+
         return renderTextField({
-            className: styles.textField,
+            className: styles.customTextField,
             value,
             onChange,
             defaultValue: '',

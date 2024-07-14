@@ -79,14 +79,14 @@
 }
 
 
-.statusCode{
+.status-code{
   font-size: 12px;
   color: #9d9a9a;
   text-align: center;
 }
 
 
-.buttonGroup{
+.button-group{
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -98,13 +98,17 @@
   flex: 0 0 auto;
 }
 
-.customButton{
+.custom-button{
   flex: 1;
   max-width: 50%;
 }
 
-.customTextField {
-  flex: 1;
+.custom-text-field, text-field {
+  flex: 0 0 auto;
+}
+
+.text-field {
+  height: 30px;
 }
 
 
