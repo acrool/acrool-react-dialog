@@ -1,10 +1,11 @@
 import {clsx} from 'clsx';
 import CSS from 'csstype';
-import React, {ReactNode, useState} from 'react';
+import React, {ReactNode, useEffect, useState} from 'react';
 
 import useLocale from '../../../locales';
 import {EStatus, IButton, ITextField} from '../../../types';
 import {IMessageProps} from '../../types';
+import ActionButton from './ActionButton';
 import {themeMap} from './config';
 import styles from './message.module.scss';
 
@@ -41,6 +42,11 @@ const Message = ({
 
     const isEnableConfirmField = typeof confirmPlaceholder !== 'undefined';
 
+
+    useEffect(() => {
+        // 移除關注中的項目
+        (document.activeElement as HTMLElement).blur();
+    }, []);
 
     /**
      * 渲染詢問對話框
@@ -87,15 +93,17 @@ const Message = ({
                 onClick,
                 color: statusTheme?.mainBtnColor,
                 children: i18n('com.dialog.ok'),
+                hotKey: 'enter'
             },
             isConfirm ? {
                 className: styles.customButton,
                 color: 'gray',
                 children: i18n('com.dialog.cancel'),
+                hotKey: 'esc'
             }: undefined,
         ];
-        
-        
+
+
 
 
         return <div
@@ -104,23 +112,15 @@ const Message = ({
             {currButtons
                 .filter(row => row)
                 .map((row, idx) => {
-                    return <React.Fragment key={`dialog_${idx}`}>
-                        {renderButton({
-                            ...row,
-                            className: styles.customButton,
-                            onClick: (e) => {
-                                if(row.onClick){
-                                    const res = row.onClick(e, isEnableConfirmField ? value: undefined);
-                                    if(res === false) {
-                                        return;
-                                    }
-                                }
-                                onClose();
-                            },
-                        })}
-                    </React.Fragment>;
-
-                })}
+                    return <ActionButton
+                        key={`action_${idx}`}
+                        args={row}
+                        onClose={onClose}
+                        confirmValue={isEnableConfirmField ? value: undefined}
+                        renderButton={renderButton}
+                    />;
+                })
+            }
         </div>;
     };
 
@@ -145,8 +145,6 @@ const Message = ({
             {renderConfirm()}
 
             {renderButtons()}
-
-            {/*<button type="button" onClick={onClose}>OK</button>*/}
         </div>
     );
 };

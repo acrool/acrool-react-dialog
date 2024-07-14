@@ -63,7 +63,6 @@ const Dialog = (props: IDialogProps) => {
         </DialogWrapper>;
     };
 
-    console.log('args', item);
     return (
         <ReactPortal
             id={props.id || rootId}

@@ -13,7 +13,7 @@ export interface IButton {
     children: ReactNode,
     color?: TButtonColor,
     onClick?: TOnButtonClick,
-    hotKey?: 'y'|'n'|'enter',
+    hotKey?: 'y'|'n'|'enter'|'esc',
 }
 
 export interface ITextField {
@@ -45,8 +45,6 @@ interface IShowArgs extends IStatusShowArgs{
 }
 
 interface IStatusShowArgs {
-    // key: string,
-
     code?: string,
     path?: string,
 

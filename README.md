@@ -1,11 +1,11 @@
 # Acrool React Dialog
 
-<a href="https://acrool-react-dialog.pages.dev/" title="Acrool React Dialog - This is a toast message function for React development notifications">
+<a href="https://acrool-react-dialog.pages.dev/" title="Acrool React Dialog - This is a dialog message function for React development dialog">
     <img src="https://raw.githubusercontent.com/acrool/acrool-react-dialog/main/example/public/og.webp" alt="Acrool React Dialog Logo"/>
 </a>
 
 <p align="center">
-    This is a toast message function for React development notifications
+    This is a dialog message function for React development dialog
 </p>
 
 <div align="center">
@@ -26,7 +26,7 @@
 
 - Supports 5 status colors: default, success, info, warning, danger
 - Call via global method
-- Configurable disappearance delay seconds
+- Plug and unplug using `@acrool/react-portal` and `framer-motion`
 
 ## Install
 
@@ -50,7 +50,26 @@ const App = () => {
     return (
         <div>
             <BaseUsed/>
-            <DialogPortal timeout={3000}/>
+
+            <DialogPortal
+                renderButton={(args) => {
+                    return <Button
+                        className={args.className}
+                        children={args.children}
+                        color={args.color}
+                        onClick={args.onClick}
+                        isBlock
+                        size="md"
+                    />;
+                }}
+                renderTextField={(args) => {
+                    return <TextField
+                        {...args}
+                        isAutoFocus
+                    />;
+                }}
+            />
+            
         </div>
     );
 };
@@ -63,7 +82,7 @@ import {EStatus, toast} from '@acrool/react-dialog';
 const Example = () => {
     return (
         <div>
-            <button type="button" onClick={() => toast({message: 'useDialog message'})}>
+            <button type="button" onClick={() => dialog({message: 'step1 test dialog', code: 'TEST1'})}>
                 useDialog message
             </button>
         </div>
@@ -71,11 +90,12 @@ const Example = () => {
 };
 ```
 
-- toast
-- toast.success
-- toast.info
-- toast.warning
-- toast.error
+- dialog
+- dialog.success
+- dialog.info
+- dialog.warning
+- dialog.error
+- dialog.confirm
 
 
 There is also a example that you can play with it:
