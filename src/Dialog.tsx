@@ -1,11 +1,10 @@
 import ReactPortal from '@acrool/react-portal';
-import React, {ReactNode, useCallback, useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 
 import {rootId} from './config';
 import styles from './dialog.module.scss';
 import DialogWrapper from './DialogWrapper';
-import {EStatus, IItem, THidden, TShow, TShowMulti} from './types';
-import {IButton, ITextField} from './types';
+import {EStatus, IDialogProps, IItem, THidden, TShow, TShowMulti} from './types';
 
 
 /**
@@ -13,13 +12,9 @@ import {IButton, ITextField} from './types';
  */
 export let dialog: TShowMulti;
 
-interface IProps {
-    id?: string
-    renderButton?: (args: IButton) => ReactNode;
-    renderTextField?: (args: ITextField) => ReactNode;
-}
 
-const Dialog = (props: IProps) => {
+
+const Dialog = (props: IDialogProps) => {
     const [item, setItem] = useState<IItem>();
 
     // set global

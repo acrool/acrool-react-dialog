@@ -68,3 +68,9 @@ export type TShowMulti = TShow & TShowStatus;
 export type THidden = () => void;
 
 export type TOnExitComplete = () => void;
+
+export interface IDialogProps {
+    id?: string
+    renderButton?: (args: IButton) => ReactNode;
+    renderTextField?: (args: ITextField) => ReactNode;
+}
