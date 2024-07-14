@@ -1,11 +1,12 @@
-import React, {ReactNode, useState} from 'react';
-import CSS from 'csstype';
-import styles from './message.module.scss';
-import {themeMap} from './config';
-import {IMessageProps} from '../../types';
-import {EStatus, IButton, ITextField} from '../../../types';
 import {clsx} from 'clsx';
+import CSS from 'csstype';
+import React, {ReactNode, useState} from 'react';
+
 import useLocale from '../../../locales';
+import {EStatus, IButton, ITextField} from '../../../types';
+import {IMessageProps} from '../../types';
+import {themeMap} from './config';
+import styles from './message.module.scss';
 
 
 interface IProps extends IMessageProps{
@@ -133,7 +134,7 @@ const Message = ({
         >
             {statusTheme && (
                 <div className={styles.headerWrapper}>
-                    {statusTheme.icon()}
+                    {<statusTheme.icon/>}
                     <span className={styles.title}>{title ?? i18n(`com.dialog.${statusTheme.titleI18n}`)}</span>
                 </div>
             )}

@@ -1,10 +1,11 @@
+import ReactPortal from '@acrool/react-portal';
 import React, {ReactNode, useCallback, useEffect, useState} from 'react';
-import {EStatus, IItem, THidden, TShow, TShowMulti} from './types';
-import ModalWithPortal from './ModalWithPortal';
-import DialogWrapper from './DialogWrapper';
-import {IButton, ITextField} from './types';
+
 import {rootId} from './config';
 import styles from './dialog.module.scss';
+import DialogWrapper from './DialogWrapper';
+import {EStatus, IItem, THidden, TShow, TShowMulti} from './types';
+import {IButton, ITextField} from './types';
 
 
 /**
@@ -69,12 +70,12 @@ const Dialog = (props: IProps) => {
 
     console.log('args', item);
     return (
-        <ModalWithPortal
+        <ReactPortal
             id={props.id || rootId}
             className={styles.root}
         >
             {item && renderDialog()}
-        </ModalWithPortal>
+        </ReactPortal>
     );
 };
 

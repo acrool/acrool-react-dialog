@@ -1,9 +1,10 @@
 import React, {ReactNode, useCallback, useEffect, useState} from 'react';
-import Message from './_components/Message';
-import MotionDrawer from '../ModalWithPortal/MotionDrawer';
-import {IMessageProps} from './types';
-import {TOnExitComplete} from '../ModalWithPortal';
+
+import MotionDrawer from '../MotionDrawer';
+import {TOnExitComplete} from '../types';
 import {IButton, ITextField} from '../types';
+import Message from './_components/Message';
+import {IMessageProps} from './types';
 
 interface IProps extends IMessageProps{
     onExitComplete: TOnExitComplete,

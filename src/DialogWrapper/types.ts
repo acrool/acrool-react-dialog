@@ -1,5 +1,6 @@
-import {EStatus, IButton, TOnButtonClick} from '../types';
 import {ReactNode} from 'react';
+
+import {EStatus, IButton, TOnButtonClick} from '../types';
 
 
 
