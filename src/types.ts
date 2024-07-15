@@ -1,4 +1,6 @@
 import {ReactNode} from 'react';
+
+import {IDialogWrapperProps} from './DialogWrapper/types';
 export type TButtonColor = 'success'|'info'|'warning'|'danger'|'gray'
 export enum EStatus {
     success = 'success',
@@ -24,14 +26,7 @@ export interface ITextField {
     onChange?: (val: string) => void
 }
 
-export interface IItem {
-    status?: EStatus,
-    message: ReactNode,
-
-    code?: string,
-    path?: string,
-    buttons?: IButton[],
-    confirm?: string
+export interface IRow extends IDialogWrapperProps{
 }
 
 export type TShow = (args: IShowArgs) => void;
@@ -65,7 +60,6 @@ export type TShowMulti = TShow & TShowStatus;
 
 export type THidden = () => void;
 
-export type TOnExitComplete = () => void;
 
 export interface IDialogProps {
     id?: string

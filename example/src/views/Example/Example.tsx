@@ -93,12 +93,12 @@ const Example = () => {
                 {
                     id: 8,
                     onClickRow: () => dialog.confirm(
-                        'Please enter the name of the team you want to delete click OK to delete. Make sure you know what you are doing.',
+                        'Type "1+1=?" to make sure you are sure you want to delete',
                         {
                             code: 'SYS_ERR_500',
                             path: 'auth/sign',
-                            confirmPlaceholder: 'type your team name',
-                            onClick: (e, confirmValue) => confirmValue === 'y'
+                            confirmPlaceholder: 'type your answer',
+                            onClick: (e, confirmValue) => confirmValue === '2'
                         }),
                     field: {
                         name: <Button color="grayDanger" size="md">Confirm</Button>,

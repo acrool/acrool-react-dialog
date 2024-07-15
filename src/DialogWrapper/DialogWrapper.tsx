@@ -2,15 +2,15 @@ import {clsx} from 'clsx';
 import CSS from 'csstype';
 import React, {ReactNode, useEffect, useState} from 'react';
 
-import useLocale from '../../../locales';
-import {EStatus, IButton, ITextField} from '../../../types';
-import {IMessageProps} from '../../types';
-import ActionButton from './ActionButton';
+import useLocale from '../locales';
+import {EStatus, IButton, ITextField} from '../types';
+import ActionButton from './_components/ActionButton';
 import {themeMap} from './config';
-import styles from './message.module.scss';
+import styles from './dialog-wrapper.module.scss';
+import {IDialogWrapperProps} from './types';
 
 
-interface IProps extends IMessageProps{
+interface IProps extends IDialogWrapperProps{
     style?: CSS.Properties,
     renderButton: (args: IButton) => ReactNode
     renderTextField: (args: ITextField) => ReactNode
@@ -20,7 +20,7 @@ interface IProps extends IMessageProps{
 /**
  * Message
  */
-const Message = ({
+const DialogWrapper = ({
     style,
     onClose,
     title,
@@ -30,7 +30,7 @@ const Message = ({
     onClick,
     buttons,
     confirmPlaceholder,
-    children,
+    message,
     renderButton,
     renderTextField,
 }: IProps) => {
@@ -137,7 +137,7 @@ const Message = ({
 
     return (
         <div
-            className={clsx(styles.message, statusTheme?.elClass)}
+            className={clsx(styles.dialogWrapper, statusTheme?.elClass)}
             style={style}
             role="alert"
         >
@@ -147,7 +147,8 @@ const Message = ({
                     <span className={styles.title}>{title ?? i18n(`com.dialog.${statusTheme.titleI18n}`)}</span>
                 </div>
             )}
-            {children && <div className={styles.content} dangerouslySetInnerHTML={{__html: children}}/>}
+
+            <div className={styles.content} dangerouslySetInnerHTML={{__html: message}}/>
 
             {renderInfo()}
 
@@ -158,5 +159,5 @@ const Message = ({
     );
 };
 
-export default Message;
+export default DialogWrapper;
 

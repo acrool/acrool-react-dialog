@@ -3,7 +3,7 @@ import React, {ReactNode} from 'react';
 import {useHotkeys} from 'react-hotkeys-hook';
 
 import {IButton} from '../../../types';
-import styles from './message.module.scss';
+import styles from './action-button.module.scss';
 
 
 interface IProps{

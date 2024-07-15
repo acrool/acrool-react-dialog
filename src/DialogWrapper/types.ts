@@ -4,12 +4,12 @@ import {EStatus, IButton, TOnButtonClick} from '../types';
 
 
 
-export interface IMessageProps {
+export interface IDialogWrapperProps {
     code?: string,
     path?: string,
     status?: EStatus,
     title?: string,
-    children: ReactNode
+    message: ReactNode
     onClick?: TOnButtonClick
     buttons?: IButton[]
     confirmPlaceholder?: string,

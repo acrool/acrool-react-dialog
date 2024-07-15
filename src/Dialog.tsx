@@ -1,10 +1,12 @@
 import ReactPortal from '@acrool/react-portal';
+import {AnimatePresence} from 'framer-motion';
 import React, {useCallback, useEffect, useState} from 'react';
 
 import {rootId} from './config';
 import styles from './dialog.module.scss';
 import DialogWrapper from './DialogWrapper';
-import {EStatus, IDialogProps, IItem, THidden, TShow, TShowMulti} from './types';
+import MotionDrawer from './MotionDrawer';
+import {EStatus, IDialogProps, IRow, THidden, TShow, TShowMulti} from './types';
 
 
 /**
@@ -15,7 +17,7 @@ export let dialog: TShowMulti;
 
 
 const Dialog = (props: IDialogProps) => {
-    const [item, setItem] = useState<IItem>();
+    const [row, setRow] = useState<IRow>();
 
     // set global
     useEffect(() => {
@@ -34,8 +36,7 @@ const Dialog = (props: IDialogProps) => {
      * @param newItem
      */
     const show: TShow = useCallback((args) => {
-
-        setItem(args);
+        setRow(args);
     }, []);
 
 
@@ -44,7 +45,7 @@ const Dialog = (props: IDialogProps) => {
      * @param key
      */
     const hidden: THidden = useCallback(() => {
-        setItem(undefined);
+        setRow(undefined);
     }, []);
 
 
@@ -52,15 +53,19 @@ const Dialog = (props: IDialogProps) => {
      * 渲染項目
      */
     const renderDialog = () => {
-        const {message, ...itemArg} = item;
-        return <DialogWrapper
-            onExitComplete={hidden}
-            renderButton={props.renderButton}
-            renderTextField={props.renderTextField}
-            {...itemArg}
-        >
-            {message}
-        </DialogWrapper>;
+
+        if(!row){
+            return null;
+        }
+
+        return <MotionDrawer>
+            <DialogWrapper
+                onClose={hidden}
+                renderButton={props.renderButton}
+                renderTextField={props.renderTextField}
+                {...row}
+            />
+        </MotionDrawer>;
     };
 
     return (
@@ -68,7 +73,9 @@ const Dialog = (props: IDialogProps) => {
             id={props.id || rootId}
             className={styles.root}
         >
-            {item && renderDialog()}
+            <AnimatePresence>
+                {renderDialog()}
+            </AnimatePresence>
         </ReactPortal>
     );
 };

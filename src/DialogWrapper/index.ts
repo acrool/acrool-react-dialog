@@ -1,1 +1,1 @@
-export {default} from './DialogWrapperControl';
+export {default} from './DialogWrapper';
