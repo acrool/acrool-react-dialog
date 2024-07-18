@@ -32,7 +32,7 @@ export interface IRow extends IDialogWrapperProps{
 export type TShow = (args: IShowArgs) => void;
 export type TStatusShow = (message: ReactNode, args?: IStatusShowArgs) => void;
 
-export type TOnButtonClick = (e?: React.MouseEvent, confirmValue?: string) => false|void;
+export type TOnButtonClick = (e?: React.MouseEvent, confirmValue?: string) => boolean|void;
 
 interface IShowArgs extends IStatusShowArgs{
     status?: EStatus,

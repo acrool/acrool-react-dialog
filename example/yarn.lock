@@ -2,14 +2,15 @@
 # yarn lockfile v1
 
 
+"@acrool/react-dialog@0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@acrool/react-dialog/-/react-dialog-0.0.2.tgz#494119ae3c8146784fff4ceb34418ad05750e668"
+  integrity sha512-9EovyW3L2oCJtyOIntnxglJFZLawTTmAj8nmXifkbNfmWaFtl4+0WM4DPrEjcBOi+f7zSmF9rn5Hj6m74FanQg==
+
 "@acrool/react-grid@5.2.2":
   version "5.2.2"
   resolved "https://registry.yarnpkg.com/@acrool/react-grid/-/react-grid-5.2.2.tgz#8de39e0709625ce22c024a587bc2d632edbd38a5"
   integrity sha512-23+iQrn9tgHW0Bg8oHtbtoxQoruFg2AoEHUCsqklRYjxZdXj0Nik32SfJ1svhGdLIzNwD0GSdl2GrQ5qNKncGA==
-
-"@acrool/react-dialog@link:..":
-  version "0.0.0"
-  uid ""
 
 "@acrool/react-table@5.1.2-alpha.1":
   version "5.1.2-alpha.1"
