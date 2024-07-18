@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@acrool/react-portal@^0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@acrool/react-portal/-/react-portal-0.0.2.tgz#c60dafc30e44e8a2636a3cd44ed462e64ff8bd49"
-  integrity sha512-VK/m3lPBQQsSzAjhsgHmDdmuaklnCpLIGBazhjTPUJC/X8yNVstlC1WMgkhIeuzG6QKUohwE3+EPMgWPeL4hUA==
+"@acrool/react-portal@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@acrool/react-portal/-/react-portal-0.0.4.tgz#a43cd948ed365878e4429a510f36b19bfb341efe"
+  integrity sha512-vDZtEGF6gRK3ZaeJHdrqvghh4KPwCDmGEbULCtkn9mWztC7Q8bs6qd+6wy4uGvHVYqVVJe6bDHRR+AzpH2joqQ==
 
 "@ampproject/remapping@^2.2.0":
   version "2.3.0"
