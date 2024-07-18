@@ -18,12 +18,12 @@ export interface IButton {
     hotKey?: 'y'|'n'|'enter'|'esc',
 }
 
-export interface ITextField {
+export interface ITextField<T = string> {
     className?: string
     defaultValue?: string
     placeholder?: string
-    value?: string
-    onChange?: (val: string) => void
+    value?: T
+    onChange?: (value: T) => void
 }
 
 export interface IRow extends IDialogWrapperProps{

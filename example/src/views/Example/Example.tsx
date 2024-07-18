@@ -69,7 +69,7 @@ const Example = () => {
                     id: 7,
                     onClickRow: () => dialog({
                         message: 'Please enter the name of the team you want to delete<store class="team-name">「Acrool Frontend」</store> and click OK to delete. Make sure you know what you are doing.',
-                        status: EStatus.danger,
+                        status: EStatus.error,
                         code: 'SYS_ERR_500',
                         path: 'auth/sign',
                         confirmPlaceholder: 'type your team name',
