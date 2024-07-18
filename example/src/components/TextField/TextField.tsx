@@ -36,7 +36,7 @@ interface IProps<T>{
  * @returns {*}
  * @param ref
  */
-export const TextField = <T extends string|number>({
+export const TextField = <T extends string>({
     className,
     style,
     type = 'text',
