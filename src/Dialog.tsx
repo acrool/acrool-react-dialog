@@ -1,12 +1,12 @@
 import ReactPortal from '@acrool/react-portal';
 import {AnimatePresence} from 'framer-motion';
-import React, {useCallback, useEffect, useState} from 'react';
+import React from 'react';
 
 import {rootId} from './config';
 import styles from './dialog.module.scss';
 import DialogWrapper from './DialogWrapper';
 import MotionDrawer from './MotionDrawer';
-import {EStatus, IDialogProps, IRow, THidden, TShow, TShowMulti} from './types';
+import {EStatus, IDialogProps, IRow, THide, TShow, TShowMulti} from './types';
 
 
 /**
@@ -14,70 +14,79 @@ import {EStatus, IDialogProps, IRow, THidden, TShow, TShowMulti} from './types';
  */
 export let dialog: TShowMulti;
 
+interface IState {
+    row: IRow
+}
 
+class Dialog extends React.Component<IDialogProps, IState> {
+    state: IState = {
+        row: undefined
+    };
 
-const Dialog = (props: IDialogProps) => {
-    const [row, setRow] = useState<IRow>();
+    constructor(props) {
+        super(props);
 
-    // set global
-    useEffect(() => {
-        dialog = show as TShowMulti;
+        dialog = this.show as TShowMulti;
 
-        dialog.success = (message, args) => show({...args, message, status: EStatus.success});
-        dialog.warning = (message, args) => show({...args, message, status: EStatus.warning});
-        dialog.error = (message, args) => show({...args, message, status: EStatus.error});
-        dialog.info = (message, args) => show({...args, message, status: EStatus.info});
-        dialog.confirm = (message, args) => show({...args, message, status: EStatus.confirm});
-    }, []);
+        dialog.success = (message, args) => this.show({...args, message, status: EStatus.success});
+        dialog.warning = (message, args) => this.show({...args, message, status: EStatus.warning});
+        dialog.error = (message, args) => this.show({...args, message, status: EStatus.error});
+        dialog.info = (message, args) => this.show({...args, message, status: EStatus.info});
+        dialog.confirm = (message, args) => this.show({...args, message, status: EStatus.confirm});
+
+    }
 
 
     /**
      * 顯示 Dialog
-     * @param newItem
+     * @param args
      */
-    const show: TShow = useCallback((args) => {
-        setRow(args);
-    }, []);
+    show: TShow = (args) => {
+        this.setState({row: args});
+    };
 
 
     /**
      * 刪除 Dialog 在 Dom 中
-     * @param key
      */
-    const hidden: THidden = useCallback(() => {
-        setRow(undefined);
-    }, []);
+    hide: THide = () => {
+        this.setState({row: undefined});
+    };
 
 
     /**
      * 渲染項目
      */
-    const renderDialog = () => {
+    renderDialog = () => {
+        const {row} = this.state;
 
-        if(!row){
+        if (!row) {
             return null;
         }
 
         return <MotionDrawer>
             <DialogWrapper
-                onClose={hidden}
-                renderButton={props.renderButton}
-                renderTextField={props.renderTextField}
+                onClose={this.hide}
+                renderButton={this.props.renderButton}
+                renderTextField={this.props.renderTextField}
                 {...row}
             />
         </MotionDrawer>;
     };
 
-    return (
-        <ReactPortal
-            id={props.id || rootId}
-            className={styles.root}
-        >
-            <AnimatePresence>
-                {renderDialog()}
-            </AnimatePresence>
-        </ReactPortal>
-    );
-};
+
+    render() {
+        return (
+            <ReactPortal
+                id={this.props.id || rootId}
+                className={styles.root}
+            >
+                <AnimatePresence>
+                    {this.renderDialog()}
+                </AnimatePresence>
+            </ReactPortal>
+        );
+    }
+}
 
 export default Dialog;

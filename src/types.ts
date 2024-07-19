@@ -58,7 +58,7 @@ interface TShowStatus {
 
 export type TShowMulti = TShow & TShowStatus;
 
-export type THidden = () => void;
+export type THide = () => void;
 
 
 export interface IDialogProps {

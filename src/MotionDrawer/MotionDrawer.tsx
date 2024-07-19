@@ -10,14 +10,14 @@ const spring = {
 
 const maskVariantsItem = {
     initial: {opacity: 0, transition: {type:'spring'}},
-    visible: {opacity: 1},
-    hidden: {opacity: 0},
+    show: {opacity: 1},
+    exit: {opacity: 0},
 };
 
 const modalVariantsItem = {
     initial: {transform: 'scale(0)'},
-    visible: {transform: 'scale(1)'},
-    hidden: {transform: 'scale(0)'},
+    show: {transform: 'scale(1)'},
+    exit: {transform: 'scale(0)'},
 };
 
 interface IProps {
@@ -35,12 +35,11 @@ const MotionDrawer = ({
 
     return <motion.div
         className={styles.motionDrawer}
-        key="modal"
         transition={spring}
         variants={maskVariantsItem}
-        animate="visible"
         initial="initial"
-        exit="hidden"
+        animate="show"
+        exit="exit"
     >
         <div className={styles.motionScrollWrapper}>
             <motion.div
