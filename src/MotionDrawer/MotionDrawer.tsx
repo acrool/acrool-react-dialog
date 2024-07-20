@@ -1,23 +1,23 @@
-import {motion} from 'framer-motion';
+import {motion, Transition, Variants} from 'framer-motion';
 import {ReactNode} from 'react';
 
 import styles from './motion-drawer.module.scss';
 
 
-const spring = {
+const spring: Transition = {
     damping: .2,
 };
 
-const maskVariantsItem = {
+const maskVariantsItem: Variants = {
     initial: {opacity: 0, transition: {type:'spring'}},
     show: {opacity: 1},
-    exit: {opacity: 0},
+    exit: {opacity: 0, transition: {type:'spring'}},
 };
 
-const modalVariantsItem = {
-    initial: {transform: 'scale(0)'},
+const modalVariantsItem: Variants = {
+    initial: {transform: 'scale(.5)'},
     show: {transform: 'scale(1)'},
-    exit: {transform: 'scale(0)'},
+    exit: {transform: 'scale(.9)'},
 };
 
 interface IProps {
@@ -44,7 +44,6 @@ const MotionDrawer = ({
         <div className={styles.motionScrollWrapper}>
             <motion.div
                 variants={modalVariantsItem}
-                transition={{type: 'spring', duration: 0.5}}
             >
                 {children}
             </motion.div>

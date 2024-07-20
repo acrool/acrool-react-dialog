@@ -100,9 +100,12 @@ const Example = () => {
                             confirmPlaceholder: 'type your answer',
                             onClick: (e, confirmValue) => {
                                 if(confirmValue !== '2'){
-                                    console.log('not type is "2"');
+                                    dialog.error('not type is "2"');
                                     return false;
                                 }
+                                requestAnimationFrame(() => {
+                                    dialog.error('You are not the workspace owner or team owner and cannot update a team');
+                                });
                             }
                         }),
                     field: {

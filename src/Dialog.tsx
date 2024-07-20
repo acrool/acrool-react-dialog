@@ -1,6 +1,7 @@
 import ReactPortal from '@acrool/react-portal';
 import {AnimatePresence} from 'framer-motion';
 import React from 'react';
+import {ulid} from 'ulid';
 
 import {rootId} from './config';
 import styles from './dialog.module.scss';
@@ -64,7 +65,9 @@ class Dialog extends React.Component<IDialogProps, IState> {
             return null;
         }
 
-        return <MotionDrawer>
+        const queueKey = ulid();
+
+        return <MotionDrawer key={queueKey}>
             <DialogWrapper
                 onClose={this.hide}
                 renderButton={this.props.renderButton}
