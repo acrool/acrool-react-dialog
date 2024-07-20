@@ -2,10 +2,9 @@
 # yarn lockfile v1
 
 
-"@acrool/react-dialog@0.0.3-alpha.1":
-  version "0.0.3-alpha.1"
-  resolved "https://registry.yarnpkg.com/@acrool/react-dialog/-/react-dialog-0.0.3-alpha.1.tgz#05c8ab2bc744f5808e45ddc7e002333b03723b83"
-  integrity sha512-XRtAzh2gSeDVvSXGkuexawe90P3B0VXsFN/8csiSmfMhkKChC1xQXisWoKwgYEOwKHh1gvMYhf49jt7WVBjdfA==
+"@acrool/react-dialog@link:..":
+  version "0.0.0"
+  uid ""
 
 "@acrool/react-grid@5.2.2":
   version "5.2.2"

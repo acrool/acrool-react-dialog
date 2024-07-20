@@ -53,7 +53,8 @@
     "ulid": "^2.x",
     "react": "^18.x",
     "react-dom": "^18.x",
-    "@acrool/react-portal": "^0.x"
+    "@acrool/react-portal": "^0.x",
+    "react-hotkeys-hook": "^3.x"
   },
   "devDependencies": {
     "@acrool/react-portal": "^0.0.4",

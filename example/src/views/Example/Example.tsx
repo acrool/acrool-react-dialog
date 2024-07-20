@@ -98,7 +98,12 @@ const Example = () => {
                             code: 'SYS_ERR_500',
                             path: 'auth/sign',
                             confirmPlaceholder: 'type your answer',
-                            onClick: (e, confirmValue) => confirmValue === '2'
+                            onClick: (e, confirmValue) => {
+                                if(confirmValue !== '2'){
+                                    console.log('not type is "2"');
+                                    return false;
+                                }
+                            }
                         }),
                     field: {
                         name: <Button color="grayDanger" size="md">Confirm</Button>,
