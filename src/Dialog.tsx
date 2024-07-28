@@ -16,13 +16,17 @@ import {EStatus, IDialogProps, IRow, THide, TShow, TShowMulti} from './types';
 export let dialog: TShowMulti;
 
 interface IState {
-    row: IRow
+    row?: IRow
 }
 
 class Dialog extends React.Component<IDialogProps, IState> {
     state: IState = {
         row: undefined
     };
+
+    get typeProps(){
+        return this.props as IDialogProps;
+    }
 
     constructor(props) {
         super(props);
@@ -70,8 +74,8 @@ class Dialog extends React.Component<IDialogProps, IState> {
         return <MotionDrawer key={queueKey}>
             <DialogWrapper
                 onClose={this.hide}
-                renderButton={this.props.renderButton}
-                renderTextField={this.props.renderTextField}
+                renderButton={this.typeProps.renderButton}
+                renderTextField={this.typeProps.renderTextField}
                 {...row}
             />
         </MotionDrawer>;
@@ -81,7 +85,7 @@ class Dialog extends React.Component<IDialogProps, IState> {
     render() {
         return (
             <ReactPortal
-                id={this.props.id || rootId}
+                id={this.typeProps.id || rootId}
                 className={styles.root}
             >
                 <AnimatePresence>

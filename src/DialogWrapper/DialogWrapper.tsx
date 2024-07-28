@@ -12,8 +12,8 @@ import {IDialogWrapperProps} from './types';
 
 interface IProps extends IDialogWrapperProps{
     style?: CSS.Properties,
-    renderButton: (args: IButton) => ReactNode
-    renderTextField: (args: ITextField) => ReactNode
+    renderButton?: (args: IButton) => ReactNode
+    renderTextField?: (args: ITextField) => ReactNode
     onClose?: (confirmValue?: string) => void,
 }
 
@@ -96,7 +96,7 @@ const DialogWrapper = ({
      */
     const renderButtons = () => {
 
-        const currButtons: Array<IButton> = buttons ?? [
+        const currButtons: Array<IButton|undefined> = buttons ?? [
             {
                 className: styles.customButton,
                 onClick,
@@ -119,7 +119,10 @@ const DialogWrapper = ({
             className={styles.buttonGroup}
         >
             {currButtons
-                .filter(row => row)
+                .reduce((curr: IButton[], row) => {
+                    if(row) return [...curr, row];
+                    return curr;
+                }, [])
                 .map((row, idx) => {
                     return <ActionButton
                         key={`action_${idx}`}
@@ -148,7 +151,9 @@ const DialogWrapper = ({
                 </div>
             )}
 
-            <div className={styles.content} dangerouslySetInnerHTML={{__html: message}}/>
+            <div className={styles.content}>
+                {message}
+            </div>
 
             {renderInfo()}
 

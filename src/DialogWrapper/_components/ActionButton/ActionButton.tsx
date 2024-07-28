@@ -46,7 +46,9 @@ const ActionButton = ({
                 return;
             }
         }
-        onClose();
+        if(onClose){
+            onClose();
+        }
     };
 
 
