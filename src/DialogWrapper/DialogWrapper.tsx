@@ -59,21 +59,25 @@ const DialogWrapper = ({
         }
 
         if(!renderTextField){
-            return <input type="text"
-                className={styles.textField}
-                value={value}
-                onChange={e => onChange(e.target.value)}
-                placeholder={confirmPlaceholder}
-            />;
+            return <div className={styles.inputWrapper}>
+                <input type="text"
+                    className={styles.textField}
+                    value={value}
+                    onChange={e => onChange(e.target.value)}
+                    placeholder={confirmPlaceholder}
+                />
+            </div>;
         }
 
-        return renderTextField({
-            className: styles.customTextField,
-            value,
-            onChange,
-            defaultValue: '',
-            placeholder: confirmPlaceholder
-        });
+        return <div className={styles.inputWrapper}>
+            {renderTextField({
+                className: styles.customTextField,
+                value,
+                onChange,
+                defaultValue: '',
+                placeholder: confirmPlaceholder
+            })}
+        </div>;
     };
 
 
