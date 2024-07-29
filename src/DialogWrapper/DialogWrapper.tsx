@@ -1,6 +1,6 @@
 import {clsx} from 'clsx';
 import CSS from 'csstype';
-import React, {ReactNode, useEffect, useState} from 'react';
+import React, {ReactElement, ReactNode, useEffect, useState} from 'react';
 
 import useLocale from '../locales';
 import {EStatus, IButton, ITextField} from '../types';
@@ -136,6 +136,15 @@ const DialogWrapper = ({
         </div>;
     };
 
+    
+    const renderMessage = () => {
+        if(typeof message === 'string'){
+            return <div className={styles.content}
+                dangerouslySetInnerHTML={{__html: message}}
+            />;
+        }
+        return <div className={styles.content} children={message}/>;
+    };
 
 
     return (
@@ -151,9 +160,7 @@ const DialogWrapper = ({
                 </div>
             )}
 
-            <div className={styles.content}>
-                {message}
-            </div>
+            {renderMessage()}
 
             {renderInfo()}
 

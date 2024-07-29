@@ -9,7 +9,7 @@ export interface IDialogWrapperProps {
     path?: string,
     status?: EStatus,
     title?: string,
-    message: ReactNode
+    message: ReactNode|string
     onClick?: TOnButtonClick
     buttons?: IButton[]
     confirmPlaceholder?: string,
