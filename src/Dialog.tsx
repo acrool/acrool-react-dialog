@@ -76,6 +76,7 @@ class Dialog extends React.Component<IDialogProps, IState> {
                 onClose={this.hide}
                 renderButton={this.typeProps.renderButton}
                 renderTextField={this.typeProps.renderTextField}
+                locale={this.typeProps.locale}
                 {...row}
             />
         </MotionDrawer>;

@@ -15,6 +15,7 @@ interface IProps extends IDialogWrapperProps{
     renderButton?: (args: IButton) => ReactNode
     renderTextField?: (args: ITextField) => ReactNode
     onClose?: (confirmValue?: string) => void,
+    locale?: string,
 }
 
 /**
@@ -33,12 +34,13 @@ const DialogWrapper = ({
     message,
     renderButton,
     renderTextField,
+    locale,
 }: IProps) => {
     const statusTheme = typeof status !== 'undefined'? themeMap[status]: undefined;
     const isConfirm = status === EStatus.confirm;
     const [value, onChange] = useState<string>('');
 
-    const {i18n} = useLocale();
+    const {i18n} = useLocale(locale);
 
     const isEnableConfirmField = typeof confirmPlaceholder !== 'undefined';
 

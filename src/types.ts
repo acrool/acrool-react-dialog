@@ -1,6 +1,7 @@
 import {ReactNode} from 'react';
 
 import {IDialogWrapperProps} from './DialogWrapper/types';
+import {Transition, Variant} from "framer-motion";
 export type TButtonColor = 'success'|'info'|'warning'|'danger'|'gray'
 export enum EStatus {
     success = 'success',
@@ -65,4 +66,17 @@ export interface IDialogProps {
     id?: string
     renderButton?: (args: IButton) => ReactNode;
     renderTextField?: (args: ITextField) => ReactNode;
+    locale?: string
 }
+
+
+type TVariantKey = 'initial'|'show'|'exit'
+export type TAnimationVariants = Record<TVariantKey, Variant>;
+
+export interface IDialogOptions {
+    variants?: TAnimationVariants
+    transition?: Transition
+    className?: string
+    isEnableHideWithClickMask?: boolean
+}
+
