@@ -113,6 +113,19 @@ const Example = () => {
                         use: 'dialog(\'You have been logged out successfully!\', {status: EStatus.success})',
                     }
                 },
+                {
+                    id: 9,
+                    onClickRow: () => dialog.error(
+                        'Add code info',
+                        {
+                            code: '@SYS_ERR_500',
+                            path: 'auth/sign',
+                        }),
+                    field: {
+                        name: <Button color="grayDanger" size="md">Confirm</Button>,
+                        use: 'dialog(\'You have been logged out successfully!\', {status: EStatus.success})',
+                    }
+                },
 
             ]}
 
