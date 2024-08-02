@@ -1,4 +1,4 @@
-import {IUseLocale, TLocaleDictionaries} from "./types";
+import {IUseLocale, TLocaleDictionaries} from './types';
 
 interface ILocale {
     [locale: string]: {

@@ -17,6 +17,7 @@ function App() {
                 <Example/>
 
                 <DialogPortal
+                    isDark
                     locale={{
                         'com.dialog.success': '成功',
                         'com.dialog.danger': '失敗',

@@ -1,3 +1,5 @@
+import './common.css';
+
 import ReactPortal from '@acrool/react-portal';
 import {clsx} from 'clsx';
 import {AnimatePresence} from 'framer-motion';
@@ -9,7 +11,6 @@ import styles from './dialog.module.scss';
 import DialogWrapper from './DialogWrapper';
 import MotionDrawer from './MotionDrawer';
 import {EStatus, IDialogProps, IRow, THide, TShow, TShowMulti} from './types';
-
 
 /**
  * Global var
@@ -94,7 +95,7 @@ class Dialog extends React.Component<IDialogProps, IState> {
                 id={this.typeProps.id || rootId}
                 className={clsx(
                     styles.root,
-                    {'dark-theme': this.typeProps.isDark},
+                    {'dark-theme': true},
                     this.typeProps.className
                 )}
             >
