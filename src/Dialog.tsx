@@ -78,7 +78,7 @@ class Dialog extends React.Component<IDialogProps, IState> {
                 isVisibleStatusIcon={this.typeProps.isVisibleStatusIcon}
                 renderButton={this.typeProps.renderButton}
                 renderTextField={this.typeProps.renderTextField}
-                locale={this.typeProps.locale}
+                locale={this.typeProps.localeDictionaries ?? this.typeProps.locale}
                 {...row}
             />
         </MotionDrawer>;

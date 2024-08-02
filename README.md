@@ -52,6 +52,17 @@ const App = () => {
             <BaseUsed/>
 
             <DialogPortal
+                locale={{
+                    'com.dialog.success': 'Success',
+                    'com.dialog.danger': 'Danger',
+                    'com.dialog.info': 'Info',
+                    'com.dialog.warning': 'Warning',
+                    'com.dialog.confirm': 'Confirm',
+                    'com.dialog.ok': 'OK',
+                    'com.dialog.cancel': 'Cancel',
+                }}
+                // locale="ja-JP"   // this is use default locale dictionaries
+                isVisibleStatusIcon
                 renderButton={(args) => {
                     return <Button
                         className={args.className}

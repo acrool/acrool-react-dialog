@@ -17,7 +17,17 @@ function App() {
                 <Banner/>
                 <Example/>
 
-                <CustomDialogPortal
+                <DialogPortal
+                    locale={{
+                        'com.dialog.success': '成功',
+                        'com.dialog.danger': '失敗',
+                        'com.dialog.info': '資訊',
+                        'com.dialog.warning': '警告',
+                        'com.dialog.confirm': '確認',
+                        'com.dialog.ok': '確定',
+                        'com.dialog.cancel': '取消',
+                    }}
+                    isVisibleStatusIcon
                     renderButton={(args) => {
                         return <Button
                             className={args.className}
@@ -43,7 +53,3 @@ function App() {
 }
 
 export default App;
-
-
-const CustomDialogPortal = styled(DialogPortal)`
-`;

@@ -70,6 +70,7 @@ export interface IDialogProps {
     renderButton?: (args: IButton) => ReactNode
     renderTextField?: (args: ITextField) => ReactNode
     locale?: string
+    localeDictionaries?: TLocaleDictionaries
 }
 
 
@@ -83,3 +84,8 @@ export interface IDialogOptions {
     isEnableHideWithClickMask?: boolean
 }
 
+
+export type TLocaleDictionaries = Record<string, string>;
+export interface IUseLocale {
+    i18n: (id: string, options?: {def?: string}) => string
+}

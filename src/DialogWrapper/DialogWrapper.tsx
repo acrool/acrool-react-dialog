@@ -3,7 +3,7 @@ import CSS from 'csstype';
 import React, {ReactNode, useEffect, useState} from 'react';
 
 import useLocale from '../locales';
-import {EStatus, IButton, ITextField} from '../types';
+import {EStatus, IButton, ITextField, TLocaleDictionaries} from '../types';
 import ActionButton from './_components/ActionButton';
 import {themeMap} from './config';
 import styles from './dialog-wrapper.module.scss';
@@ -16,7 +16,7 @@ interface IProps extends IDialogWrapperProps{
     renderTextField?: (args: ITextField) => ReactNode
     onClose?: (confirmValue?: string) => void,
     isVisibleStatusIcon?: boolean,
-    locale?: string,
+    locale?: string|TLocaleDictionaries,
 }
 
 /**

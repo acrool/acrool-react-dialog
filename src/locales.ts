@@ -1,3 +1,5 @@
+import {IUseLocale, TLocaleDictionaries} from "./types";
+
 interface ILocale {
     [locale: string]: {
         [key: string]: string,
@@ -44,14 +46,18 @@ const locales: ILocale = {
 };
 
 
+
 /**
  * 多語系
- * @param locale
+ * @param localeOrLocaleDictionaries
  */
-const useLocale = (locale?: string) => {
-    const i18n = (id: string, options?: {def?: string}) => {
+const useLocale = (localeOrLocaleDictionaries?: string|TLocaleDictionaries): IUseLocale => {
+    const i18n: IUseLocale['i18n'] = (id, options) => {
         const defaultMessage = 'en-US';
-        const localeMap = (typeof locale !== 'undefined' && locales[locale]) ? locales[locale]: locales[defaultMessage];
+
+        const localeMap = typeof localeOrLocaleDictionaries === 'object' ?
+            localeOrLocaleDictionaries
+            : (typeof localeOrLocaleDictionaries !== 'undefined' && locales[localeOrLocaleDictionaries]) ? locales[localeOrLocaleDictionaries]: locales[defaultMessage];
 
         if(typeof localeMap !== 'undefined' && typeof localeMap[id] !== 'undefined'){
             return localeMap[id];
