@@ -6,6 +6,7 @@ import Banner from './components/Banner';
 import {GridThemeProvider} from '@acrool/react-grid';
 import Button from './components/Button';
 import TextField from './components/TextField';
+import styled from "styled-components";
 
 
 
@@ -16,7 +17,7 @@ function App() {
                 <Banner/>
                 <Example/>
 
-                <DialogPortal
+                <CustomDialogPortal
                     renderButton={(args) => {
                         return <Button
                             className={args.className}
@@ -42,3 +43,7 @@ function App() {
 }
 
 export default App;
+
+
+const CustomDialogPortal = styled(DialogPortal)`
+`;

@@ -44,12 +44,14 @@ const locales: ILocale = {
 };
 
 
-
-
+/**
+ * 多語系
+ * @param locale
+ */
 const useLocale = (locale?: string) => {
     const i18n = (id: string, options?: {def?: string}) => {
-        const selectLocale = typeof locale !== 'undefined' ? locale : 'en-US';
-        const localeMap = locales[selectLocale] ? locales[selectLocale]: locales['en-US'];
+        const defaultMessage = 'en-US';
+        const localeMap = (typeof locale !== 'undefined' && locales[locale]) ? locales[locale]: locales[defaultMessage];
 
         if(typeof localeMap !== 'undefined' && typeof localeMap[id] !== 'undefined'){
             return localeMap[id];

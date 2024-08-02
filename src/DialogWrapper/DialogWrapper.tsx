@@ -1,6 +1,6 @@
 import {clsx} from 'clsx';
 import CSS from 'csstype';
-import React, {ReactElement, ReactNode, useEffect, useState} from 'react';
+import React, {ReactNode, useEffect, useState} from 'react';
 
 import useLocale from '../locales';
 import {EStatus, IButton, ITextField} from '../types';
@@ -15,6 +15,7 @@ interface IProps extends IDialogWrapperProps{
     renderButton?: (args: IButton) => ReactNode
     renderTextField?: (args: ITextField) => ReactNode
     onClose?: (confirmValue?: string) => void,
+    isVisibleStatusIcon?: boolean,
     locale?: string,
 }
 
@@ -24,6 +25,7 @@ interface IProps extends IDialogWrapperProps{
 const DialogWrapper = ({
     style,
     onClose,
+    isVisibleStatusIcon = true,
     title,
     status,
     code,
@@ -161,7 +163,7 @@ const DialogWrapper = ({
         >
             {statusTheme && (
                 <div className={styles.headerWrapper}>
-                    {<statusTheme.icon/>}
+                    {isVisibleStatusIcon && <statusTheme.icon/>}
                     <span className={styles.title}>{title ?? i18n(`com.dialog.${statusTheme.titleI18n}`)}</span>
                 </div>
             )}

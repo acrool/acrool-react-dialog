@@ -1,4 +1,5 @@
 import ReactPortal from '@acrool/react-portal';
+import {clsx} from 'clsx';
 import {AnimatePresence} from 'framer-motion';
 import React from 'react';
 import {ulid} from 'ulid';
@@ -74,6 +75,7 @@ class Dialog extends React.Component<IDialogProps, IState> {
         return <MotionDrawer key={queueKey}>
             <DialogWrapper
                 onClose={this.hide}
+                isVisibleStatusIcon={this.typeProps.isVisibleStatusIcon}
                 renderButton={this.typeProps.renderButton}
                 renderTextField={this.typeProps.renderTextField}
                 locale={this.typeProps.locale}
@@ -87,7 +89,11 @@ class Dialog extends React.Component<IDialogProps, IState> {
         return (
             <ReactPortal
                 id={this.typeProps.id || rootId}
-                className={styles.root}
+                className={clsx(
+                    styles.root,
+                    {'dark-theme': this.typeProps.isDark},
+                    this.typeProps.className
+                )}
             >
                 <AnimatePresence>
                     {this.renderDialog()}

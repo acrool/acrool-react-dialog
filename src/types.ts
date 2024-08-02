@@ -1,7 +1,7 @@
+import {Transition, Variant} from 'framer-motion';
 import {ReactNode} from 'react';
 
 import {IDialogWrapperProps} from './DialogWrapper/types';
-import {Transition, Variant} from "framer-motion";
 export type TButtonColor = 'success'|'info'|'warning'|'danger'|'gray'
 export enum EStatus {
     success = 'success',
@@ -64,8 +64,11 @@ export type THide = () => void;
 
 export interface IDialogProps {
     id?: string
-    renderButton?: (args: IButton) => ReactNode;
-    renderTextField?: (args: ITextField) => ReactNode;
+    isDark?: boolean
+    className?: string
+    isVisibleStatusIcon?: boolean
+    renderButton?: (args: IButton) => ReactNode
+    renderTextField?: (args: ITextField) => ReactNode
     locale?: string
 }
 
