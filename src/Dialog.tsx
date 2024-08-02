@@ -72,13 +72,16 @@ class Dialog extends React.Component<IDialogProps, IState> {
 
         const queueKey = ulid();
 
-        return <MotionDrawer key={queueKey}>
+        return <MotionDrawer
+            key={queueKey}
+            modalOptions={this.typeProps.modalOption}
+        >
             <DialogWrapper
                 onClose={this.hide}
                 isVisibleStatusIcon={this.typeProps.isVisibleStatusIcon}
                 renderButton={this.typeProps.renderButton}
                 renderTextField={this.typeProps.renderTextField}
-                locale={this.typeProps.localeDictionaries ?? this.typeProps.locale}
+                locale={this.typeProps.locale}
                 {...row}
             />
         </MotionDrawer>;

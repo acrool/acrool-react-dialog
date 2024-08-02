@@ -70,18 +70,17 @@ export interface IDialogProps {
     renderButton?: (args: IButton) => ReactNode
     renderTextField?: (args: ITextField) => ReactNode
     locale?: string
-    localeDictionaries?: TLocaleDictionaries
+    modalOption: IModalOptions
 }
 
 
 type TVariantKey = 'initial'|'show'|'exit'
 export type TAnimationVariants = Record<TVariantKey, Variant>;
 
-export interface IDialogOptions {
+export interface IModalOptions {
     variants?: TAnimationVariants
     transition?: Transition
     className?: string
-    isEnableHideWithClickMask?: boolean
 }
 
 

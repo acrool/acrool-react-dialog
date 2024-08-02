@@ -1,13 +1,14 @@
+import {clsx} from 'clsx';
 import {motion, Variants} from 'framer-motion';
 import {ReactNode} from 'react';
 
-import {IDialogOptions} from '../types';
+import {IModalOptions} from '../types';
 import styles from './motion-drawer.module.scss';
 
 
 
 
-const maskMotionProps: IDialogOptions = {
+const maskMotionProps: IModalOptions = {
     variants: {
         initial: {opacity: 0, transition: {type:'spring'}},
         show: {opacity: 1, transition: {type: 'just'}},
@@ -26,6 +27,7 @@ const modalVariantsItem: Variants = {
 };
 
 interface IProps {
+    modalOptions?: IModalOptions,
     children: ReactNode
 }
 
@@ -33,10 +35,13 @@ interface IProps {
 /**
  * 開啟動畫抽屜
  * @param children
+ * @param modalOptions
  */
 const MotionDrawer = ({
     children,
+    modalOptions,
 }: IProps) => {
+    const {className, ...dialogProps} = modalOptions ?? {className: ''};
 
     return <div className={styles.motionDrawer}>
         <motion.div
@@ -48,8 +53,9 @@ const MotionDrawer = ({
         />
         <motion.div
             transition={{type: 'spring', duration: .2}}
-            className={styles.motionAnimationWrapper}
+            className={clsx(styles.motionAnimationWrapper, className)}
             variants={modalVariantsItem}
+            {...dialogProps}
             initial="initial"
             animate="show"
             exit="exit"
