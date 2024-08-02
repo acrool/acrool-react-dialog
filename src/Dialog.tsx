@@ -95,7 +95,7 @@ class Dialog extends React.Component<IDialogProps, IState> {
                 id={this.typeProps.id || rootId}
                 className={clsx(
                     styles.root,
-                    {'dark-theme': true},
+                    {'dark-theme': this.typeProps.isDark},
                     this.typeProps.className
                 )}
             >
