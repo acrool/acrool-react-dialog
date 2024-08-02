@@ -70,7 +70,7 @@ export interface IDialogProps {
     renderButton?: (args: IButton) => ReactNode
     renderTextField?: (args: ITextField) => ReactNode
     locale?: string
-    modalOption: IModalOptions
+    modalOptions?: IModalOptions
 }
 
 

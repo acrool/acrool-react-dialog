@@ -74,7 +74,7 @@ class Dialog extends React.Component<IDialogProps, IState> {
 
         return <MotionDrawer
             key={queueKey}
-            modalOptions={this.typeProps.modalOption}
+            modalOptions={this.typeProps.modalOptions}
         >
             <DialogWrapper
                 onClose={this.hide}
