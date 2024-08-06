@@ -2,6 +2,7 @@ import {Transition, Variant} from 'framer-motion';
 import {ReactNode} from 'react';
 
 import {IDialogWrapperProps} from './DialogWrapper/types';
+import {ILocaleDictionaries} from './locales';
 export type TButtonColor = 'success'|'info'|'warning'|'danger'|'gray'
 export enum EStatus {
     success = 'success',
@@ -23,8 +24,8 @@ export interface ITextField<V = string> {
     className?: string
     defaultValue?: string
     placeholder?: string
-    value?: V
-    onChange?: (value: V) => void
+    value: V
+    onChange: (value: V) => void
     ref?: React.Ref<V>
 }
 
@@ -71,6 +72,7 @@ export interface IDialogProps {
     renderButton?: (args: IButton) => ReactNode
     renderTextField?: (args: ITextField) => ReactNode
     locale?: string
+    localeDictionaries?: ILocaleDictionaries
     modalOptions?: IModalOptions
 }
 

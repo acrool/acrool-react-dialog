@@ -18,15 +18,18 @@ function App() {
 
                 <DialogPortal
                     isDark
-                    locale={{
-                        'com.dialog.success': '成功',
-                        'com.dialog.danger': '失敗',
-                        'com.dialog.info': '資訊',
-                        'com.dialog.warning': '警告',
-                        'com.dialog.confirm': '確認',
-                        'com.dialog.ok': '確定',
-                        'com.dialog.cancel': '取消',
+                    localeDictionaries={{
+                        'zh-TW': {
+                            'com.dialog.success': '成功',
+                            'com.dialog.error': '失敗',
+                            'com.dialog.info': '資訊',
+                            'com.dialog.warning': '警告',
+                            'com.dialog.confirm': '確認',
+                            'com.dialog.ok': '確定',
+                            'com.dialog.cancel': '取消',
+                        }
                     }}
+                    locale="zh-TW"
                     isVisibleStatusIcon
                     renderButton={(args) => {
                         return <Button
@@ -40,7 +43,8 @@ function App() {
                     }}
                     renderTextField={(args) => {
                         return <TextField
-                            {...args}
+                            value={args.value}
+                            onChange={value => args.onChange(value as string)}
                             isAutoFocus
                         />;
                     }}

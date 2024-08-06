@@ -61,8 +61,8 @@ const Example = () => {
                     id: 6,
                     onClickRow: () => dialog.error('Sorry, the account password you entered is wrong'),
                     field: {
-                        name: <Button color="danger" size="md">Danger</Button>,
-                        use: 'dialog.danger(\'Sorry, the account password you entered is wrong\')',
+                        name: <Button color="danger" size="md">Error</Button>,
+                        use: 'dialog.error(\'Sorry, the account password you entered is wrong\')',
                     }
                 },
                 {

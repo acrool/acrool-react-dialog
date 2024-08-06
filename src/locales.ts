@@ -1,15 +1,15 @@
 import {IUseLocale, TLocaleDictionaries} from './types';
 
-interface ILocale {
+export interface ILocaleDictionaries {
     [locale: string]: {
         [key: string]: string,
     }
 }
 
-const locales: ILocale = {
+export const localeDictionaries: ILocaleDictionaries = {
     'en-US': {
         'com.dialog.success': 'Success',
-        'com.dialog.danger': 'Danger',
+        'com.dialog.error': 'Danger',
         'com.dialog.info': 'Info',
         'com.dialog.warning': 'Warning',
         'com.dialog.confirm': 'Confirm',
@@ -18,7 +18,7 @@ const locales: ILocale = {
     },
     'zh-TW': {
         'com.dialog.success': '成功',
-        'com.dialog.danger': '危險',
+        'com.dialog.error': '危險',
         'com.dialog.info': '資訊',
         'com.dialog.warning': '警告',
         'com.dialog.confirm': '確認',
@@ -27,7 +27,7 @@ const locales: ILocale = {
     },
     'zh-CN': {
         'com.dialog.success': '成功',
-        'com.dialog.danger': '危险',
+        'com.dialog.error': '危险',
         'com.dialog.info': '资讯',
         'com.dialog.warning': '警告',
         'com.dialog.confirm': '确认',
@@ -36,7 +36,7 @@ const locales: ILocale = {
     },
     'ja-JP': {
         'com.dialog.success': '成功',
-        'com.dialog.danger': '危険',
+        'com.dialog.error': '危険',
         'com.dialog.info': '情報',
         'com.dialog.warning': '警告する',
         'com.dialog.confirm': '確認',
@@ -46,18 +46,18 @@ const locales: ILocale = {
 };
 
 
+const defaultMessage = 'en-US';
 
 /**
  * 多語系
- * @param localeOrLocaleDictionaries
+ * @param locale
+ * @param myLocaleDictionaries
  */
-const useLocale = (localeOrLocaleDictionaries?: string|TLocaleDictionaries): IUseLocale => {
+const useLocale = (locale = defaultMessage, myLocaleDictionaries = localeDictionaries): IUseLocale => {
     const i18n: IUseLocale['i18n'] = (id, options) => {
-        const defaultMessage = 'en-US';
 
-        const localeMap = typeof localeOrLocaleDictionaries === 'object' ?
-            localeOrLocaleDictionaries
-            : (typeof localeOrLocaleDictionaries !== 'undefined' && locales[localeOrLocaleDictionaries]) ? locales[localeOrLocaleDictionaries]: locales[defaultMessage];
+        console.log('locale', locale);
+        const localeMap = myLocaleDictionaries[locale];
 
         if(typeof localeMap !== 'undefined' && typeof localeMap[id] !== 'undefined'){
             return localeMap[id];

@@ -2,8 +2,8 @@ import {clsx} from 'clsx';
 import CSS from 'csstype';
 import React, {ReactNode, useEffect, useState} from 'react';
 
-import useLocale from '../locales';
-import {EStatus, IButton, ITextField, TLocaleDictionaries} from '../types';
+import useLocale, {ILocaleDictionaries} from '../locales';
+import {EStatus, IButton, ITextField} from '../types';
 import ActionButton from './_components/ActionButton';
 import {themeMap} from './config';
 import styles from './dialog-wrapper.module.scss';
@@ -16,7 +16,8 @@ interface IProps extends IDialogWrapperProps{
     renderTextField?: (args: ITextField) => ReactNode
     onClose?: (confirmValue?: string) => void,
     isVisibleStatusIcon?: boolean,
-    locale?: string|TLocaleDictionaries,
+    locale?: string,
+    localeDictionaries?: ILocaleDictionaries,
 }
 
 /**
@@ -37,12 +38,13 @@ const DialogWrapper = ({
     renderButton,
     renderTextField,
     locale,
+    localeDictionaries,
 }: IProps) => {
     const statusTheme = typeof status !== 'undefined'? themeMap[status]: undefined;
     const isConfirm = status === EStatus.confirm;
     const [value, onChange] = useState<string>('');
 
-    const {i18n} = useLocale(locale);
+    const {i18n} = useLocale(locale, localeDictionaries);
 
     const isEnableConfirmField = typeof confirmPlaceholder !== 'undefined';
 

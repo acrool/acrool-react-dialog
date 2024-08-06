@@ -11,6 +11,7 @@ import styles from './dialog.module.scss';
 import DialogWrapper from './DialogWrapper';
 import MotionDrawer from './MotionDrawer';
 import {EStatus, IDialogProps, IRow, THide, TShow, TShowMulti} from './types';
+import {localeDictionaries} from "./locales";
 
 /**
  * Global var
@@ -83,6 +84,10 @@ class Dialog extends React.Component<IDialogProps, IState> {
                 renderButton={this.typeProps.renderButton}
                 renderTextField={this.typeProps.renderTextField}
                 locale={this.typeProps.locale}
+                localeDictionaries={{
+                    ...localeDictionaries,
+                    ...this.typeProps.localeDictionaries,
+                }}
                 {...row}
             />
         </MotionDrawer>;

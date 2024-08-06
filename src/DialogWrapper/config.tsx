@@ -36,7 +36,7 @@ export const themeMap: Record<EStatus, IStatusConfig> = {
     },
     [EStatus.error]: {
         icon: SvgError,
-        titleI18n: 'danger',
+        titleI18n: 'error',
         elClass: styles.statusDanger,
         mainBtnColor: 'danger',
     },
