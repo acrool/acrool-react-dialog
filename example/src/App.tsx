@@ -21,7 +21,7 @@ function App() {
                     localeDictionaries={{
                         'zh-TW': {
                             'com.dialog.success': '成功',
-                            'com.dialog.error': '失敗',
+                            'com.dialog.error': '失敗(改)',
                             'com.dialog.info': '資訊',
                             'com.dialog.warning': '警告',
                             'com.dialog.confirm': '確認',

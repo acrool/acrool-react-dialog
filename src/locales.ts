@@ -1,4 +1,4 @@
-import {IUseLocale, TLocaleDictionaries} from './types';
+import {IUseLocale} from './types';
 
 export interface ILocaleDictionaries {
     [locale: string]: {
@@ -46,18 +46,17 @@ export const localeDictionaries: ILocaleDictionaries = {
 };
 
 
-const defaultMessage = 'en-US';
+const defaultLocale = 'en-US';
 
 /**
  * 多語系
  * @param locale
- * @param myLocaleDictionaries
+ * @param localeDictionaries
  */
-const useLocale = (locale = defaultMessage, myLocaleDictionaries = localeDictionaries): IUseLocale => {
+const useLocale = (locale, localeDictionaries: ILocaleDictionaries): IUseLocale => {
     const i18n: IUseLocale['i18n'] = (id, options) => {
 
-        console.log('locale', locale);
-        const localeMap = myLocaleDictionaries[locale];
+        const localeMap = localeDictionaries[locale] ?? localeDictionaries[defaultLocale];
 
         if(typeof localeMap !== 'undefined' && typeof localeMap[id] !== 'undefined'){
             return localeMap[id];

@@ -17,7 +17,7 @@ interface IProps extends IDialogWrapperProps{
     onClose?: (confirmValue?: string) => void,
     isVisibleStatusIcon?: boolean,
     locale?: string,
-    localeDictionaries?: ILocaleDictionaries,
+    localeDictionaries: ILocaleDictionaries,
 }
 
 /**
@@ -37,7 +37,7 @@ const DialogWrapper = ({
     message,
     renderButton,
     renderTextField,
-    locale,
+    locale = 'en-US',
     localeDictionaries,
 }: IProps) => {
     const statusTheme = typeof status !== 'undefined'? themeMap[status]: undefined;
