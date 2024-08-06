@@ -19,12 +19,13 @@ export interface IButton {
     hotKey?: 'y'|'n'|'enter'|'esc',
 }
 
-export interface ITextField<T = string> {
+export interface ITextField<V = string> {
     className?: string
     defaultValue?: string
     placeholder?: string
-    value?: T
-    onChange?: (value: T) => void
+    value?: V
+    onChange?: (value: V) => void
+    ref?: React.Ref<V>
 }
 
 export interface IRow extends IDialogWrapperProps{
