@@ -36,7 +36,7 @@ interface IProps<T>{
  * @returns {*}
  * @param ref
  */
-export const TextField = <T extends string>({
+export const TextField = <V extends string|number>({
     className,
     style,
     type = 'text',
@@ -55,22 +55,22 @@ export const TextField = <T extends string>({
     onChange,
     step,
     required,
-}: IProps<T>, ref?: ForwardedRef<HTMLInputElement>) => {
+}: IProps<V>, ref?: ForwardedRef<HTMLInputElement>) => {
 
 
     /**
      * 處理值改變
      */
     const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-        let newValue: string|number = e.target.value;
-        if(typeof value === 'number'){
+        let newValue: V = (e.target.value) as V;
+        if(type=== 'number'){
             const num = parseFloat(e.target.value);
-            newValue = Number.isNaN(num) ? 0: num;
+            newValue = (Number.isNaN(num) ? 0: num) as V;
         }
 
 
         if (onChange) {
-            onChange(newValue as T);
+            onChange(newValue as V);
         }
     }, [onChange]);
 
