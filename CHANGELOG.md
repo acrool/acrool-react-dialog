@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.6](https://github.com/acrool/acrool-react-dialog/compare/v0.0.6-alpha.6...v0.0.6) (2024-08-07)
+
 ### [0.0.6-alpha.6](https://github.com/acrool/acrool-react-dialog/compare/v0.0.6-alpha.5...v0.0.6-alpha.6) (2024-08-06)
 
 ### [0.0.6-alpha.5](https://github.com/acrool/acrool-react-dialog/compare/v0.0.6-alpha.4...v0.0.6-alpha.5) (2024-08-06)
