@@ -6,7 +6,6 @@ import {AnimatePresence} from 'framer-motion';
 import React from 'react';
 import {ulid} from 'ulid';
 
-import {rootId} from './config';
 import styles from './dialog.module.scss';
 import DialogWrapper from './DialogWrapper';
 import {localeDictionaries} from './locales';
@@ -27,8 +26,12 @@ class Dialog extends React.Component<IDialogProps, IState> {
         row: undefined
     };
 
+    static defaultProps = {
+        id: 'acrool-react-dialog',
+    };
+
     get typeProps(){
-        return this.props as IDialogProps;
+        return this.props as IDialogProps & typeof Dialog.defaultProps;
     }
 
     constructor(props) {
@@ -97,12 +100,13 @@ class Dialog extends React.Component<IDialogProps, IState> {
     render() {
         return (
             <ReactPortal
-                id={this.typeProps.id || rootId}
+                id={this.typeProps.id}
                 className={clsx(
                     styles.root,
                     {'dark-theme': this.typeProps.isDark},
                     this.typeProps.className
                 )}
+                containerId={this.typeProps.containerId}
             >
                 <AnimatePresence>
                     {this.renderDialog()}

@@ -65,6 +65,7 @@ export type THide = () => void;
 
 
 export interface IDialogProps {
+    containerId?: string
     id?: string
     isDark?: boolean
     className?: string
