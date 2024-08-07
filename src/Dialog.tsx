@@ -9,9 +9,9 @@ import {ulid} from 'ulid';
 import {rootId} from './config';
 import styles from './dialog.module.scss';
 import DialogWrapper from './DialogWrapper';
+import {localeDictionaries} from './locales';
 import MotionDrawer from './MotionDrawer';
 import {EStatus, IDialogProps, IRow, THide, TShow, TShowMulti} from './types';
-import {localeDictionaries} from "./locales";
 
 /**
  * Global var
