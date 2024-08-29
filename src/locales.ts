@@ -9,7 +9,7 @@ export interface ILocaleDictionaries {
 export const localeDictionaries: ILocaleDictionaries = {
     'en-US': {
         'com.dialog.success': 'Success',
-        'com.dialog.error': 'Danger',
+        'com.dialog.error': 'Fail',
         'com.dialog.info': 'Info',
         'com.dialog.warning': 'Warning',
         'com.dialog.confirm': 'Confirm',
@@ -18,7 +18,7 @@ export const localeDictionaries: ILocaleDictionaries = {
     },
     'zh-TW': {
         'com.dialog.success': '成功',
-        'com.dialog.error': '危險',
+        'com.dialog.error': '失敗',
         'com.dialog.info': '資訊',
         'com.dialog.warning': '警告',
         'com.dialog.confirm': '確認',
@@ -27,7 +27,7 @@ export const localeDictionaries: ILocaleDictionaries = {
     },
     'zh-CN': {
         'com.dialog.success': '成功',
-        'com.dialog.error': '危险',
+        'com.dialog.error': '失败',
         'com.dialog.info': '资讯',
         'com.dialog.warning': '警告',
         'com.dialog.confirm': '确认',
@@ -36,7 +36,7 @@ export const localeDictionaries: ILocaleDictionaries = {
     },
     'ja-JP': {
         'com.dialog.success': '成功',
-        'com.dialog.error': '危険',
+        'com.dialog.error': '失敗',
         'com.dialog.info': '情報',
         'com.dialog.warning': '警告する',
         'com.dialog.confirm': '確認',
