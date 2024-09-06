@@ -41,9 +41,9 @@ export const themeMap: Record<EStatus, IStatusConfig> = {
         mainBtnColor: 'danger',
     },
     [EStatus.confirm]: {
-        icon: SvgWarning,
+        icon: SvgInfo,
         titleI18n: 'confirm',
-        elClass: styles.statusWarning,
+        elClass: styles.statusInfo,
         mainBtnColor: 'danger',
     },
 };
