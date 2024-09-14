@@ -2,8 +2,13 @@ import type { Preview } from "@storybook/react";
 // import './reset.css';
 import '@acrool/react-dialog/dist/index.css';
 import '@acrool/react-grid/dist/index.css';
+import '@acrool/react-table/dist/index.css';
+import '@acrool/react-table/dist/themes/game.css';
 import {GridThemeProvider} from "@acrool/react-grid";
 import {DialogPortal} from "@acrool/react-dialog";
+import {createElement} from "react";
+import Button from "../src/components/Button";
+import TextField from "../src/components/TextField";
 
 
 const preview: Preview = {
@@ -34,22 +39,8 @@ const preview: Preview = {
                   }}
                   locale="en-US"
                   isVisibleStatusIcon
-                  renderButton={(args) => {
-                      return <Button
-                          className={args.className}
-                          children={args.children}
-                          color={args.color}
-                          onClick={args.onClick}
-                          isBlock
-                          size="md"
-                      />;
-                  }}
-                  renderTextField={(args) => {
-                      return <TextField
-                          {...args}
-                          isAutoFocus
-                      />;
-                  }}
+                  renderButton={args => createElement(Button, args, args.children)}
+                  renderTextField={args => createElement(TextField, args, null)}
               />
           </GridThemeProvider>
       ),

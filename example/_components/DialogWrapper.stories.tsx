@@ -183,9 +183,6 @@ export const WithRenderInput: Story = {
         code: 'SYS_666',
         confirmPlaceholder: 'type your new name',
         renderTextField: args => createElement(TextField, args, null),
-        // renderTextField: args => {
-        //     return <TextField type="text" {...args}/>;
-        // },
     },
     render: function Render(args) {
 

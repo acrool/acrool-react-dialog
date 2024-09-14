@@ -65,22 +65,8 @@ const App = () => {
                 }}
                 locale="en-US"
                 isVisibleStatusIcon
-                renderButton={(args) => {
-                    return <Button
-                        className={args.className}
-                        children={args.children}
-                        color={args.color}
-                        onClick={args.onClick}
-                        isBlock
-                        size="md"
-                    />;
-                }}
-                renderTextField={(args) => {
-                    return <TextField
-                        {...args}
-                        isAutoFocus
-                    />;
-                }}
+                renderButton={args => createElement(Button, args, args.children)}
+                renderTextField={args => createElement(TextField, args, null)}
             />
             
         </div>
