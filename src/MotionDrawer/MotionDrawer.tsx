@@ -10,7 +10,7 @@ import styles from './motion-drawer.module.scss';
 
 const maskMotionProps: IModalOptions = {
     variants: {
-        initial: {opacity: 0, transition: {type:'spring'}},
+        initial: {opacity: 0},
         show: {opacity: 1, transition: {type: 'just'}},
         exit: {opacity: 0},
     },
@@ -21,9 +21,9 @@ const maskMotionProps: IModalOptions = {
 
 
 const modalVariantsItem: Variants = {
-    initial: {scaleX: .5, scaleY: .5, scaleZ: .8, translateX: 0, translateY: -20, translateZ: 0, opacity: 0, transition: {type: 'spring', duration: .2}},
-    show: {scaleX: 1, scaleY: 1, scaleZ: 1, translateX: 0, translateY: 0, translateZ: 0, opacity: 1, transition: {type: 'spring', restDelta: .5}},
-    exit: {scaleX: .8, scaleY: .8, scaleZ: .8, translateX: 0, translateY: -20, translateZ: 0, opacity: 0, transition: {type:'spring', duration: .4}},
+    initial: {scaleX: .8, scaleY: .8, scaleZ: .9, translateX: 0, translateY: -20, translateZ: 0, opacity: 0},
+    show: {scaleX: 1, scaleY: 1, scaleZ: 1, translateX: 0, translateY: 0, translateZ: 0, opacity: 1, transition: {type: 'spring', restDelta: .2, duration: .4}},
+    exit: {translateX: 0, translateY: -15, translateZ: 0, opacity: 0, transition: {type:'spring', duration: .3}},
 };
 
 interface IProps {
