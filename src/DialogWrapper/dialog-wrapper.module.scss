@@ -13,15 +13,16 @@
   --default-danger-color: #e74c3c;
   --default-info-color: #3498db;
 
+
   &.dark-theme{
     --dialog-wrapper-bg-color: #222222FF;
     --dialog-wrapper-color: #fff;
   }
 
-
   --dialog-wrapper-bg-color: #fff;
   --dialog-wrapper-color: #000;
 
+  z-index: var(--dialog-portal-index, var(--default-portal-index));
 
   display: flex;
   flex-direction: column;

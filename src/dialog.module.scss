@@ -8,13 +8,5 @@
 
 
 .root{
-    position: fixed;
-    max-width: 100%;
-    width: auto;
-
-    margin: 0 auto;
-    z-index: var(--dialog-portal-index, var(--default-portal-index));
-
-    display: flex;
-    flex-direction: column;
+     display: contents;
 }

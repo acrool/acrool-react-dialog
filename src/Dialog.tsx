@@ -1,5 +1,3 @@
-import './common.css';
-
 import ReactPortal from '@acrool/react-portal';
 import {clsx} from 'clsx';
 import {AnimatePresence} from 'framer-motion';
