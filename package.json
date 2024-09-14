@@ -1,6 +1,6 @@
 {
   "name": "@acrool/react-dialog",
-  "version": "0.0.8-alpha.0",
+  "version": "0.0.8",
   "description": "Dialog library based for Reactjs",
   "keywords": [
     "acrool",
