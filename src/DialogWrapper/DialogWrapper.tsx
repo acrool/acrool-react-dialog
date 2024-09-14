@@ -14,7 +14,7 @@ interface IProps extends IDialogWrapperProps{
     style?: CSS.Properties
     isDark?: boolean
     renderButton?: (args: IButton) => ReactNode
-    renderTextField?: (args: ITextField) => ReactNode
+    renderTextField?: <V extends string|number>(args: ITextField<V>) => ReactNode
     onClose?: (confirmValue?: string) => void
     isVisibleStatusIcon?: boolean
     locale?: string

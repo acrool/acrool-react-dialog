@@ -71,7 +71,7 @@ export interface IDialogProps {
     className?: string
     isVisibleStatusIcon?: boolean
     renderButton?: (args: IButton) => ReactNode
-    renderTextField?: (args: ITextField) => ReactNode
+    renderTextField?: <V extends string|number>(args: ITextField<V>) => ReactNode
     locale?: string
     localeDictionaries?: ILocaleDictionaries
     modalOptions?: IModalOptions
