@@ -20,7 +20,7 @@ export interface IButton {
     hotKey?: 'y'|'n'|'enter'|'esc',
 }
 
-export interface ITextField<V = string> {
+export interface ITextField<V extends string|number> {
     ref?: React.RefObject<HTMLInputElement>
     className?: string
     defaultValue?: string
