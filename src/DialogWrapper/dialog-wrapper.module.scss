@@ -1,4 +1,28 @@
+.dialog-wrapper *,
+.dialog-wrapper *::before,
+.dialog-wrapper *::after{
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  line-height: normal;
+}
+
 .dialog-wrapper{
+  --default-portal-index: 905;
+  --default-success-color: #07bc0c;
+  --default-warning-color: #f1c40f;
+  --default-danger-color: #e74c3c;
+  --default-info-color: #3498db;
+
+  &.dark-theme{
+    --dialog-wrapper-bg-color: #222222FF;
+    --dialog-wrapper-color: #fff;
+  }
+
+
+  --dialog-wrapper-bg-color: #fff;
+  --dialog-wrapper-color: #000;
+
+
   display: flex;
   flex-direction: column;
 
@@ -113,6 +137,8 @@
 }
 .text-field {
   height: 30px;
+  width: 100%;
+  padding: 0 10px;
 }
 
 

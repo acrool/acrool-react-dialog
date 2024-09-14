@@ -96,7 +96,7 @@ const ButtonRoot = styled.button<{
     position: relative;
     font-size: var(--button-font-size, 14px);
     font-weight: var(--button-font-weight);
-    height: var(--button-height, 1);
+    height: var(--button-height, 26px);
     line-height: 1;
     padding: var(--button-padding, 0);
     border-radius: .25rem;

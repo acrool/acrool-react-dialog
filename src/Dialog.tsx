@@ -8,7 +8,6 @@ import {ulid} from 'ulid';
 
 import styles from './dialog.module.scss';
 import DialogWrapper from './DialogWrapper';
-import {localeDictionaries} from './locales';
 import MotionDrawer from './MotionDrawer';
 import {EStatus, IDialogProps, IRow, THide, TShow, TShowMulti} from './types';
 
@@ -82,15 +81,13 @@ class Dialog extends React.Component<IDialogProps, IState> {
             modalOptions={this.typeProps.modalOptions}
         >
             <DialogWrapper
+                isDark={this.typeProps.isDark}
                 onClose={this.hide}
                 isVisibleStatusIcon={this.typeProps.isVisibleStatusIcon}
                 renderButton={this.typeProps.renderButton}
                 renderTextField={this.typeProps.renderTextField}
                 locale={this.typeProps.locale}
-                localeDictionaries={{
-                    ...localeDictionaries,
-                    ...this.typeProps.localeDictionaries,
-                }}
+                localeDictionaries={this.typeProps.localeDictionaries}
                 {...row}
             />
         </MotionDrawer>;
@@ -103,10 +100,9 @@ class Dialog extends React.Component<IDialogProps, IState> {
                 id={this.typeProps.id}
                 className={clsx(
                     styles.root,
-                    {'dark-theme': this.typeProps.isDark},
                     this.typeProps.className
                 )}
-                containerId={this.typeProps.containerId}
+                containerSelector={this.typeProps.containerSelector}
             >
                 <AnimatePresence>
                     {this.renderDialog()}

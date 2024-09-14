@@ -21,12 +21,12 @@ export interface IButton {
 }
 
 export interface ITextField<V = string> {
+    ref?: React.RefObject<HTMLInputElement>
     className?: string
     defaultValue?: string
     placeholder?: string
     value: V
     onChange: (value: V) => void
-    ref?: React.Ref<V>
 }
 
 export interface IRow extends IDialogWrapperProps{
@@ -65,7 +65,7 @@ export type THide = () => void;
 
 
 export interface IDialogProps {
-    containerId?: string
+    containerSelector?: () => HTMLElement | null
     id?: string
     isDark?: boolean
     className?: string

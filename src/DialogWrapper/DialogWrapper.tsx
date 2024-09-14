@@ -1,6 +1,6 @@
 import {clsx} from 'clsx';
 import CSS from 'csstype';
-import React, {ReactNode, useEffect, useState} from 'react';
+import React, {ReactNode, useEffect, useRef, useState} from 'react';
 
 import useLocale, {ILocaleDictionaries} from '../locales';
 import {EStatus, IButton, ITextField} from '../types';
@@ -11,13 +11,14 @@ import {IDialogWrapperProps} from './types';
 
 
 interface IProps extends IDialogWrapperProps{
-    style?: CSS.Properties,
+    style?: CSS.Properties
+    isDark?: boolean
     renderButton?: (args: IButton) => ReactNode
     renderTextField?: (args: ITextField) => ReactNode
-    onClose?: (confirmValue?: string) => void,
-    isVisibleStatusIcon?: boolean,
-    locale?: string,
-    localeDictionaries: ILocaleDictionaries,
+    onClose?: (confirmValue?: string) => void
+    isVisibleStatusIcon?: boolean
+    locale?: string
+    localeDictionaries?: ILocaleDictionaries
 }
 
 /**
@@ -25,6 +26,7 @@ interface IProps extends IDialogWrapperProps{
  */
 const DialogWrapper = ({
     style,
+    isDark,
     onClose,
     isVisibleStatusIcon = true,
     title,
@@ -40,6 +42,7 @@ const DialogWrapper = ({
     locale = 'en-US',
     localeDictionaries,
 }: IProps) => {
+    const inputRef = useRef<HTMLInputElement>(null);
     const statusTheme = typeof status !== 'undefined'? themeMap[status]: undefined;
     const isConfirm = status === EStatus.confirm;
     const [value, onChange] = useState<string>('');
@@ -75,6 +78,7 @@ const DialogWrapper = ({
 
         return <div className={styles.inputWrapper}>
             {renderTextField({
+                ref: inputRef,
                 className: styles.customTextField,
                 value,
                 onChange,
@@ -159,7 +163,7 @@ const DialogWrapper = ({
 
     return (
         <div
-            className={clsx(styles.dialogWrapper, statusTheme?.elClass)}
+            className={clsx(styles.dialogWrapper, statusTheme?.elClass, {[styles.darkTheme]: isDark})}
             style={style}
             role="alert"
         >

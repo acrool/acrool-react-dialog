@@ -6,7 +6,7 @@ export interface ILocaleDictionaries {
     }
 }
 
-export const localeDictionaries: ILocaleDictionaries = {
+export const defaultLocaleDictionaries: ILocaleDictionaries = {
     'en-US': {
         'com.dialog.success': 'Success',
         'com.dialog.error': 'Fail',
@@ -53,10 +53,15 @@ const defaultLocale = 'en-US';
  * @param locale
  * @param localeDictionaries
  */
-const useLocale = (locale, localeDictionaries: ILocaleDictionaries): IUseLocale => {
+const useLocale = (locale, localeDictionaries?: ILocaleDictionaries): IUseLocale => {
     const i18n: IUseLocale['i18n'] = (id, options) => {
 
-        const localeMap = localeDictionaries[locale] ?? localeDictionaries[defaultLocale];
+        const mergeLocaleDictionaries = {
+            ...defaultLocaleDictionaries,
+            ...localeDictionaries,
+        };
+
+        const localeMap = mergeLocaleDictionaries[locale] ?? mergeLocaleDictionaries[defaultLocale];
 
         if(typeof localeMap !== 'undefined' && typeof localeMap[id] !== 'undefined'){
             return localeMap[id];
