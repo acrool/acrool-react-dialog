@@ -29,7 +29,7 @@ const preview: Preview = {
                   localeDictionaries={{
                       'en-US': {
                           'com.dialog.success': 'Success',
-                          'com.dialog.error': 'Danger',
+                          'com.dialog.error': 'Error',
                           'com.dialog.info': 'Info',
                           'com.dialog.warning': 'Warning',
                           'com.dialog.confirm': 'Confirm',
@@ -38,6 +38,7 @@ const preview: Preview = {
                       }
                   }}
                   locale="en-US"
+                  isDark
                   isVisibleStatusIcon
                   renderButton={args => createElement(Button, args, args.children)}
                   renderTextField={args => createElement(TextField, args, null)}
