@@ -12,12 +12,15 @@ export enum EStatus {
     confirm = 'confirm',
 }
 
+export type TButtonType = 'submit'|'button';
+
 export interface IButton {
     className?: string
     children: ReactNode,
     color?: TButtonColor,
     onClick?: TOnButtonClick,
-    hotKey?: 'y'|'n'|'enter'|'esc',
+    hotKey?: EKeyboardKey,
+    type?: TButtonType,
 }
 
 export interface ITextField<V extends string|number> {
@@ -35,7 +38,8 @@ export interface IRow extends IDialogWrapperProps{
 export type TShow = (args: IShowArgs) => void;
 export type TStatusShow = (message: ReactNode, args?: IStatusShowArgs) => void;
 
-export type TOnButtonClick = (e?: React.MouseEvent, confirmValue?: string) => boolean|void;
+export type TOnButtonClick = (e?: React.MouseEvent) => boolean|void;
+export type TOnSubmit = (confirmValue?: string) => boolean|void;
 
 interface IShowArgs extends IStatusShowArgs{
     status?: EStatus,
@@ -46,7 +50,7 @@ interface IStatusShowArgs {
     code?: string,
     path?: string,
 
-    onClick?: TOnButtonClick
+    onSubmit?: TOnSubmit
     buttons?: IButton[],
     confirmPlaceholder?: string
 }
@@ -91,4 +95,14 @@ export interface IModalOptions {
 export type TLocaleDictionaries = Record<string, string>;
 export interface IUseLocale {
     i18n: (id: string, options?: {def?: string}) => string
+}
+
+export enum EKeyboardKey {
+    Escape = 'Escape',
+    Enter = 'Enter',
+    Tab = 'Tab',
+    ArrowUp = 'ArrowUp',
+    ArrowDown = 'ArrowDown',
+    Yes = 'y',
+    No = 'n',
 }

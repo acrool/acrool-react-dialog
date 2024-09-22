@@ -5,6 +5,7 @@ import React from 'react';
 import {ulid} from 'ulid';
 
 import styles from './dialog.module.scss';
+import {DialogProviderContext} from './DialogProvider';
 import DialogWrapper from './DialogWrapper';
 import MotionDrawer from './MotionDrawer';
 import {EStatus, IDialogProps, IRow, THide, TShow, TShowMulti} from './types';
@@ -74,22 +75,27 @@ class Dialog extends React.Component<IDialogProps, IState> {
             return null;
         }
 
+        const {onSubmit, ...baseRow} = row;
         const queueKey = ulid();
 
         return <MotionDrawer
             key={queueKey}
             modalOptions={this.typeProps.modalOptions}
         >
-            <DialogWrapper
-                isDark={this.typeProps.isDark}
-                onClose={this.hide}
-                isVisibleStatusIcon={this.typeProps.isVisibleStatusIcon}
-                renderButton={this.typeProps.renderButton}
-                renderTextField={this.typeProps.renderTextField}
-                locale={this.typeProps.locale}
-                localeDictionaries={this.typeProps.localeDictionaries}
-                {...row}
-            />
+            <DialogProviderContext.Provider value={{
+                hide: this.hide,
+                onSubmit,
+            }}>
+                <DialogWrapper
+                    isDark={this.typeProps.isDark}
+                    isVisibleStatusIcon={this.typeProps.isVisibleStatusIcon}
+                    renderButton={this.typeProps.renderButton}
+                    renderTextField={this.typeProps.renderTextField}
+                    locale={this.typeProps.locale}
+                    localeDictionaries={this.typeProps.localeDictionaries}
+                    {...row}
+                />
+            </DialogProviderContext.Provider>
         </MotionDrawer>;
     };
 

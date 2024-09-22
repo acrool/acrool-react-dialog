@@ -32,7 +32,6 @@ const Example = () => {
                 {
                     id: 3,
                     onClickRow: () => dialog.success('You have been logged in successfully',{
-                        onClick: () => console.log('xxx'),
                         code: 'SYS_ERR_500',
                         path: 'auth/sign',
                     }),
@@ -65,31 +64,31 @@ const Example = () => {
                         use: 'dialog.error(\'Sorry, the account password you entered is wrong\')',
                     }
                 },
-                {
-                    id: 7,
-                    onClickRow: () => dialog({
-                        message: 'Please enter the name of the team you want to delete<store class="team-name">「Acrool Frontend」</store> and click OK to delete. Make sure you know what you are doing.',
-                        status: EStatus.error,
-                        code: 'SYS_ERR_500',
-                        path: 'auth/sign',
-                        confirmPlaceholder: 'type your team name',
-                        buttons: [
-                            {
-                                children: 'Delete',
-                                color: 'danger',
-                                onClick: (e, confirmValue) => console.log(confirmValue)
-                            },
-                            {
-                                children: 'Cancel',
-                                color: 'gray'
-                            },
-                        ],
-                    }),
-                    field: {
-                        name: <Button color="grayDanger" size="md">Custom</Button>,
-                        use: 'dialog(\'You have been logged out successfully!\', {status: EStatus.success})',
-                    }
-                },
+                // {
+                //     id: 7,
+                //     onClickRow: () => dialog({
+                //         message: 'Please enter the name of the team you want to delete<store class="team-name">「Acrool Frontend」</store> and click OK to delete. Make sure you know what you are doing.',
+                //         status: EStatus.error,
+                //         code: 'SYS_ERR_500',
+                //         path: 'auth/sign',
+                //         confirmPlaceholder: 'type your team name',
+                //         buttons: [
+                //             {
+                //                 children: 'Delete',
+                //                 color: 'danger',
+                //                 onClick: (e, confirmValue) => console.log(confirmValue)
+                //             },
+                //             {
+                //                 children: 'Cancel',
+                //                 color: 'gray'
+                //             },
+                //         ],
+                //     }),
+                //     field: {
+                //         name: <Button color="grayDanger" size="md">Custom</Button>,
+                //         use: 'dialog(\'You have been logged out successfully!\', {status: EStatus.success})',
+                //     }
+                // },
                 {
                     id: 8,
                     onClickRow: () => dialog.confirm(
@@ -98,13 +97,14 @@ const Example = () => {
                             code: 'SYS_ERR_500',
                             path: 'auth/sign',
                             confirmPlaceholder: 'type your answer',
-                            onClick: (e, confirmValue) => {
+                            onSubmit: (confirmValue) => {
+                                console.log('xxx');
                                 if(confirmValue !== '2'){
                                     dialog.error('not type is "2"');
                                     return false;
                                 }
                                 requestAnimationFrame(() => {
-                                    dialog.error('You are not the workspace owner or team owner and cannot update a team');
+                                    dialog.success('The answer is correct');
                                 });
                             }
                         }),
@@ -122,12 +122,12 @@ const Example = () => {
                             path: 'auth/sign',
                         }),
                     field: {
-                        name: <Button color="grayDanger" size="md">Confirm</Button>,
+                        name: <Button color="grayDanger" size="md">Error</Button>,
                         use: 'dialog.error(\'Add code info\', {code: \'@SYS_ERR_500\', path: \'auth/sign\'})',
                     }
                 },
                 {
-                    id: 9,
+                    id: 10,
                     onClickRow: () => {
                         dialog.error(
                             'Multi 1',
