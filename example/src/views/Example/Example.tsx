@@ -110,7 +110,7 @@ const Example = () => {
                         }),
                     field: {
                         name: <Button color="grayDanger" size="md">Confirm</Button>,
-                        use: 'dialog(\'You have been logged out successfully!\', {status: EStatus.success})',
+                        use: 'dialog.confirm(\'Type "1+1=?" to make sure you are sure you want to delete\', {confirmPlaceholder: \'type your answer\'})',
                     }
                 },
                 {
@@ -123,7 +123,41 @@ const Example = () => {
                         }),
                     field: {
                         name: <Button color="grayDanger" size="md">Confirm</Button>,
-                        use: 'dialog(\'You have been logged out successfully!\', {status: EStatus.success})',
+                        use: 'dialog.error(\'Add code info\', {code: \'@SYS_ERR_500\', path: \'auth/sign\'})',
+                    }
+                },
+                {
+                    id: 9,
+                    onClickRow: () => {
+                        dialog.error(
+                            'Multi 1',
+                            {
+                                code: '@1',
+                                path: 'auth/sign',
+                            });
+
+                        setTimeout(() => {
+                            dialog.error(
+                                'Multi 2',
+                                {
+                                    code: '@2',
+                                    path: 'auth/sign',
+                                });
+                        }, 100);
+
+                        setTimeout(() => {
+                            dialog.error(
+                                'Multi 3',
+                                {
+                                    code: '@3',
+                                    path: 'auth/sign',
+                                });
+                        }, 200);
+
+                    },
+                    field: {
+                        name: <Button color="grayDanger" size="md">Multi Show</Button>,
+                        use: '',
                     }
                 },
 

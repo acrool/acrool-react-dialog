@@ -50,7 +50,9 @@ class Dialog extends React.Component<IDialogProps, IState> {
      * @param args
      */
     show: TShow = (args) => {
-        this.setState({row: args});
+        if(!this.state.row){
+            this.setState({row: args});
+        }
     };
 
 
