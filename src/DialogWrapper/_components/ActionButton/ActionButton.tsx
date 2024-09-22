@@ -1,8 +1,9 @@
 import CSS from 'csstype';
-import React, {ReactNode} from 'react';
-import {useHotkeys} from 'react-hotkeys-hook';
+import React, {ReactNode, useCallback} from 'react';
 
-import {IButton} from '../../../types';
+import {useDialog} from '../../../DialogProvider';
+import {EKeyboardKey, IButton} from '../../../types';
+import HotkeyListener from '../HotkeyListener';
 import styles from './action-button.module.scss';
 
 
@@ -10,8 +11,6 @@ interface IProps{
     style?: CSS.Properties,
     args: IButton
     renderButton?: (args: IButton) => ReactNode
-    onClose?: (confirmValue?: string) => void,
-    confirmValue?: string,
 }
 
 /**
@@ -19,54 +18,60 @@ interface IProps{
  */
 const ActionButton = ({
     args,
-    confirmValue,
-    onClose,
     renderButton,
 }: IProps) => {
     const {hotKey: currentHotKey, ...buttonArgs} = args;
+    const {hide, onSubmit} = useDialog();
 
-    const generateClick = (hotKey: string) => {
-        return () => {
-            if(hotKey === currentHotKey) {
-                handleOnClick();
-            }
-        };
-    };
+    /**
+     * 處理當鍵盤按[上 下 空白]的時候開啟選單
+     */
+    const handleOnHotKey = useCallback((evt: KeyboardEvent) => {
+        if(args.hotKey === evt.key as EKeyboardKey) {
+            evt.stopPropagation();
+            handleOnClick();
+        }
+    }, []);
 
 
-    useHotkeys('enter', generateClick('enter'), [currentHotKey, onClose]);
-    useHotkeys('esc', generateClick('esc'), [currentHotKey, onClose]);
-    useHotkeys('y', generateClick('y'), [currentHotKey, onClose]);
-    useHotkeys('n', generateClick('n'), [currentHotKey, onClose]);
-
+    /**
+     * 處理點擊事件
+     */
     const handleOnClick = () => {
-        if(args.onClick) {
-            const res = args.onClick(undefined, confirmValue);
-            if(res === false) {
-                return;
-            }
+        if(args.type === 'submit' && onSubmit){
+            return;
         }
-        if(onClose){
-            onClose();
-        }
+
+        hide();
     };
 
 
-    if(!renderButton){
-        return <button type="button" 
+    /**
+     * 渲染按鈕區塊
+     */
+    const renderButtonWrapper = () => {
+        if(renderButton){
+            return renderButton({
+                className: styles.customButton,
+                ...buttonArgs,
+                onClick: handleOnClick,
+            });
+        }
+
+        return <button
             className={styles.customButton}
             {...buttonArgs}
             onClick={handleOnClick}
-        />; 
-    }
-    
+        />;
+    };
+
+
 
     return <>
-        {renderButton({
-            className: styles.customButton,
-            ...buttonArgs,
-            onClick: handleOnClick,
-        })}
+        {renderButtonWrapper()}
+
+        {/* 註冊事件 */}
+        {args.hotKey && <HotkeyListener onKeyDown={handleOnHotKey}/>}
     </>;
 };
 

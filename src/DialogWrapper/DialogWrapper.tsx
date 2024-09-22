@@ -2,8 +2,9 @@ import {clsx} from 'clsx';
 import CSS from 'csstype';
 import React, {ReactNode, useEffect, useRef, useState} from 'react';
 
+import {useDialog} from '../DialogProvider';
 import useLocale, {ILocaleDictionaries} from '../locales';
-import {EStatus, IButton, ITextField} from '../types';
+import {EKeyboardKey, EStatus, IButton, ITextField, TOnSubmit} from '../types';
 import ActionButton from './_components/ActionButton';
 import {themeMap} from './config';
 import styles from './dialog-wrapper.module.scss';
@@ -15,7 +16,7 @@ interface IProps extends IDialogWrapperProps{
     isDark?: boolean
     renderButton?: (args: IButton) => ReactNode
     renderTextField?: <V extends string|number>(args: ITextField<V>) => ReactNode
-    onClose?: (confirmValue?: string) => void
+    onSubmit?: TOnSubmit,
     isVisibleStatusIcon?: boolean
     locale?: string
     localeDictionaries?: ILocaleDictionaries
@@ -27,13 +28,11 @@ interface IProps extends IDialogWrapperProps{
 const DialogWrapper = ({
     style,
     isDark,
-    onClose,
     isVisibleStatusIcon = true,
     title,
     status,
     code,
     path,
-    onClick,
     buttons,
     confirmPlaceholder,
     message,
@@ -42,6 +41,7 @@ const DialogWrapper = ({
     locale = 'en-US',
     localeDictionaries,
 }: IProps) => {
+    const {hide, onSubmit} = useDialog();
     const inputRef = useRef<HTMLInputElement>(null);
     const statusTheme = typeof status !== 'undefined'? themeMap[status]: undefined;
     const isConfirm = status === EStatus.confirm;
@@ -113,16 +113,17 @@ const DialogWrapper = ({
         const currButtons: Array<IButton|undefined> = buttons ?? [
             {
                 className: styles.customButton,
-                onClick,
                 color: statusTheme?.mainBtnColor,
                 children: i18n('com.dialog.ok'),
-                hotKey: 'enter'
+                hotKey: EKeyboardKey.Enter,
+                type: 'submit',
             },
             isConfirm ? {
                 className: styles.customButton,
                 color: 'gray',
                 children: i18n('com.dialog.cancel'),
-                hotKey: 'esc'
+                hotKey: EKeyboardKey.Escape,
+                type: 'button',
             }: undefined,
         ];
 
@@ -141,8 +142,6 @@ const DialogWrapper = ({
                     return <ActionButton
                         key={`action_${idx}`}
                         args={row}
-                        onClose={onClose}
-                        confirmValue={isEnableConfirmField ? value: undefined}
                         renderButton={renderButton}
                     />;
                 })
@@ -150,7 +149,10 @@ const DialogWrapper = ({
         </div>;
     };
 
-    
+
+    /**
+     * 渲染訊息
+     */
     const renderMessage = () => {
         if(typeof message === 'string'){
             return <div className={styles.content}
@@ -158,6 +160,23 @@ const DialogWrapper = ({
             />;
         }
         return <div className={styles.content} children={message}/>;
+    };
+
+
+    /**
+     * 處理送出表單
+     * @param e
+     */
+    const handleSubmit = (e: React.SyntheticEvent) => {
+        e.preventDefault();
+        if(onSubmit){
+            const res = onSubmit(e.target?.[0]?.value);
+            if(res === false){
+                return;
+            }
+        }
+        hide();
+
     };
 
 
@@ -178,9 +197,11 @@ const DialogWrapper = ({
 
             {renderInfo()}
 
-            {renderConfirm()}
+            <form onSubmit={handleSubmit}>
+                {renderConfirm()}
 
-            {renderButtons()}
+                {renderButtons()}
+            </form>
         </div>
     );
 };

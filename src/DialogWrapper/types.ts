@@ -1,6 +1,6 @@
 import {ReactNode} from 'react';
 
-import {EStatus, IButton, TOnButtonClick} from '../types';
+import {EStatus, IButton, TOnSubmit} from '../types';
 
 
 
@@ -10,7 +10,7 @@ export interface IDialogWrapperProps {
     status?: EStatus,
     title?: string,
     message: ReactNode|string
-    onClick?: TOnButtonClick
+    onSubmit?: TOnSubmit
     buttons?: IButton[]
     confirmPlaceholder?: string,
     renderButton?: (args: IButton) => ReactNode
