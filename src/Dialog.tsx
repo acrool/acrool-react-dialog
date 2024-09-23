@@ -53,6 +53,10 @@ class Dialog extends React.Component<IDialogProps, IState> {
     show: TShow = (args) => {
         if(!this.state.row){
             this.setState({row: args});
+
+            if(this.typeProps.onShow){
+                this.typeProps.onShow();
+            }
         }
     };
 
@@ -62,6 +66,10 @@ class Dialog extends React.Component<IDialogProps, IState> {
      */
     hide: THide = () => {
         this.setState({row: undefined});
+
+        if(this.typeProps.onHide){
+            this.typeProps.onHide();
+        }
     };
 
 

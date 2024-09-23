@@ -79,6 +79,9 @@ export interface IDialogProps {
     locale?: string
     localeDictionaries?: ILocaleDictionaries
     modalOptions?: IModalOptions
+    onShow?: () => void
+    onHide?: () => void
+
 }
 
 
