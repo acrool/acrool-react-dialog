@@ -34,7 +34,7 @@ const Button = ({
     children,
     color,
     type = 'button',
-    size,
+    size = 'md',
     isBlock = false,
     isOutline = false,
     onClick,

@@ -1,16 +1,15 @@
 import {DialogWrapper, EStatus} from '@acrool/react-dialog';
-import {Flex} from '@acrool/react-grid';
 import {action} from '@storybook/addon-actions';
 import type {Meta, StoryObj} from '@storybook/react';
-import {fn} from '@storybook/test';
-import {createElement, Fragment} from 'react';
+import React, {createElement} from 'react';
+import {useDarkMode} from 'storybook-dark-mode';
 
-import Button from '../src/components/Button';
-import TextField from '../src/components/TextField/TextField';
+import Button from '../../atoms/Button';
+import TextField from '../../atoms/TextField';
 
 
 const meta = {
-    title: 'Components/DialogWrapper',
+    title: 'Primary/DialogWrapper',
     component: DialogWrapper,
     parameters: {
         layout: 'centered',
@@ -24,13 +23,25 @@ const meta = {
     tags: ['autodocs'],
     argTypes: {},
     args: {
-        isDark: false,
         isVisibleStatusIcon: true,
         status: EStatus.success,
-        onClick: fn(),
+        // onClick: fn(),
         message: 'Your profile save success',
         // locale = 'en-US',
         // localeDictionaries,
+        renderButton: args => <Button
+            {...args}
+        />,
+        renderTextField: args => <TextField
+            type="text"
+            {...args}
+            onChange={args.onChange as (val: string) => void}
+            value={args.value as string}
+        />,
+    },
+    render: function Render(args) {
+        const isDark = useDarkMode();
+        return <DialogWrapper  {...args} isDark={isDark}/>;
     },
 } satisfies Meta<typeof DialogWrapper>;
 
@@ -45,13 +56,6 @@ export const WithSuccess: Story = {
         status: EStatus.success,
         message: 'Your profile save success',
     },
-    render: function Render(args) {
-
-        return <Flex className="gap-2">
-            <DialogWrapper {...args}/>
-            <DialogWrapper {...args} isDark/>
-        </Flex>;
-    },
 };
 
 
@@ -61,13 +65,6 @@ export const WithInfo: Story = {
         status: EStatus.info,
         message: 'You have a long message',
     },
-    render: function Render(args) {
-
-        return <Flex className="gap-2">
-            <DialogWrapper {...args}/>
-            <DialogWrapper {...args} isDark/>
-        </Flex>;
-    },
 };
 
 
@@ -76,13 +73,6 @@ export const WithWarning: Story = {
         status: EStatus.warning,
         message: 'Are you sure you want to submit the form?',
     },
-    render: function Render(args) {
-
-        return <Flex className="gap-2">
-            <DialogWrapper {...args}/>
-            <DialogWrapper {...args} isDark/>
-        </Flex>;
-    },
 };
 
 
@@ -90,13 +80,6 @@ export const WithError: Story = {
     args: {
         status: EStatus.error,
         message: 'No permission to operate this feature',
-    },
-    render: function Render(args) {
-
-        return <Flex className="gap-2">
-            <DialogWrapper {...args}/>
-            <DialogWrapper {...args} isDark/>
-        </Flex>;
     },
 };
 
@@ -110,13 +93,6 @@ export const WithDebugInfo: Story = {
         code: 'SYS_777',
         path: '/auth/me',
     },
-    render: function Render(args) {
-
-        return <Flex className="gap-2">
-            <DialogWrapper {...args}/>
-            <DialogWrapper {...args} isDark/>
-        </Flex>;
-    },
 };
 
 
@@ -125,13 +101,6 @@ export const WithConfirm: Story = {
         status: EStatus.confirm,
         title: 'Confirm',
         message: 'No permission to operate this feature',
-    },
-    render: function Render(args) {
-
-        return <Flex className="gap-2">
-            <DialogWrapper {...args}/>
-            <DialogWrapper {...args} isDark/>
-        </Flex>;
     },
 };
 
@@ -147,13 +116,6 @@ export const WithCustomTitle: Story = {
         title: 'Upgrade',
         message: 'There is now a new version that can be upgraded.',
     },
-    render: function Render(args) {
-
-        return <Flex className="gap-2">
-            <DialogWrapper {...args}/>
-            <DialogWrapper {...args} isDark/>
-        </Flex>;
-    },
 };
 
 
@@ -164,13 +126,6 @@ export const WithConfirmInput: Story = {
         message: 'The same name appears in the system, please enter a new name',
         code: 'SYS_666',
         confirmPlaceholder: 'type your new name',
-    },
-    render: function Render(args) {
-
-        return <Flex className="gap-2">
-            <DialogWrapper {...args}/>
-            <DialogWrapper {...args} isDark/>
-        </Flex>;
     },
 };
 
@@ -183,13 +138,6 @@ export const WithRenderInput: Story = {
         code: 'SYS_666',
         confirmPlaceholder: 'type your new name',
         renderTextField: args => createElement(TextField, args, null),
-    },
-    render: function Render(args) {
-
-        return <Flex className="gap-2">
-            <DialogWrapper {...args}/>
-            <DialogWrapper {...args} isDark/>
-        </Flex>;
     },
 };
 
@@ -205,13 +153,6 @@ export const WithCustomButtons: Story = {
             {children: 'No', onClick: action('[No].onClick')}
         ]
     },
-    render: function Render(args) {
-
-        return <Flex className="gap-2">
-            <DialogWrapper {...args}/>
-            <DialogWrapper {...args} isDark/>
-        </Flex>;
-    },
 };
 
 
@@ -222,13 +163,6 @@ export const WithRenderButton: Story = {
         message: 'Do you need help organizing your files today?',
         renderButton: args => createElement(Button, args, args.children),
     },
-    render: function Render(args) {
-
-        return <Flex className="gap-2">
-            <DialogWrapper {...args}/>
-            <DialogWrapper {...args} isDark/>
-        </Flex>;
-    },
 };
 
 
@@ -236,13 +170,6 @@ export const WithRenderButton: Story = {
 export const WithLocale: Story = {
     args: {
         locale: 'zh-TW'
-    },
-    render: function Render(args) {
-
-        return <Flex className="gap-2">
-            <DialogWrapper {...args}/>
-            <DialogWrapper {...args} isDark/>
-        </Flex>;
     },
 };
 
@@ -262,13 +189,6 @@ export const WithLocaleDictionaries: Story = {
                 'com.dialog.cancel': '취소',
             }
         }
-    },
-    render: function Render(args) {
-
-        return <Flex className="gap-2">
-            <DialogWrapper {...args}/>
-            <DialogWrapper {...args} isDark/>
-        </Flex>;
     },
 };
 

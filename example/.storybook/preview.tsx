@@ -1,18 +1,22 @@
 import type { Preview } from "@storybook/react";
-// import './reset.css';
+import './reset.css';
 import '@acrool/react-dialog/dist/index.css';
+import { themes } from '@storybook/theming';
+
 import '@acrool/react-grid/dist/index.css';
-import '@acrool/react-table/dist/index.css';
-import '@acrool/react-table/dist/themes/game.css';
 import {GridThemeProvider} from "@acrool/react-grid";
 import {DialogPortal} from "@acrool/react-dialog";
-import {createElement} from "react";
-import Button from "../src/components/Button";
-import TextField from "../src/components/TextField";
+import React, {createElement} from "react";
+import Button from "../src/components/atoms/Button";
+import TextField from "../src/components/atoms/TextField";
 
 
 const preview: Preview = {
   parameters: {
+      darkMode: {
+          dark: { ...themes.dark, appPreviewBg: '#000' },
+          light: { ...themes.dark, appPreviewBg: '#fff' }
+      },
     controls: {
       matchers: {
         color: /(background|color)$/i,
@@ -40,8 +44,15 @@ const preview: Preview = {
                   locale="en-US"
                   isDark
                   isVisibleStatusIcon
-                  renderButton={args => createElement(Button, args, args.children)}
-                  renderTextField={args => createElement(TextField, args, null)}
+                  renderButton={args => <Button
+                      {...args}
+                  />}
+                  renderTextField={args => <TextField
+                      type="text"
+                      {...args}
+                      onChange={args.onChange as (val: string) => void}
+                      value={args.value as string}
+                  />}
               />
           </GridThemeProvider>
       ),
