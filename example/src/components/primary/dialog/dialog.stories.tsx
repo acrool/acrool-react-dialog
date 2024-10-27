@@ -1,11 +1,12 @@
+import {dialog} from '@acrool/react-dialog';
 import type {Meta, StoryObj} from '@storybook/react';
-import {dialog} from "@acrool/react-dialog";
-import Button from "../../atoms/Button";
+
+import Button from '../../atoms/Button';
 
 
 
 const meta = {
-    title: 'Primary/Dialog',
+    title: 'Primary/dialog',
     parameters: {
         layout: 'centered',
         actions: {argTypesRegex: '^on.*'},
@@ -51,7 +52,7 @@ export const WithSuccess: Story = {
                 dialog.success('You have been logged in successfully',{
                     code: 'SYS_ERR_500',
                     path: 'auth/sign',
-                })
+                });
             }}
         >
             Show
@@ -71,7 +72,7 @@ export const WithInfo: Story = {
             <Button
                 color="primary"
                 onClick={() => {
-                    dialog.info('You have a new message')
+                    dialog.info('You have a new message');
                 }}
             >
                 Show
@@ -90,7 +91,7 @@ export const WithWarning: Story = {
             <Button
                 color="primary"
                 onClick={() => {
-                    dialog.warning('Please check if your parameter settings are correct?')
+                    dialog.warning('Please check if your parameter settings are correct?');
                 }}
             >
                 Show
@@ -110,7 +111,7 @@ export const WithError: Story = {
             <Button
                 color="primary"
                 onClick={() => {
-                    dialog.error('Sorry, the account password you entered is wrong')
+                    dialog.error('Sorry, the account password you entered is wrong');
                 }}
             >
                 Show
@@ -144,7 +145,7 @@ export const WithConfirm: Story = {
                                     dialog.success('The answer is correct');
                                 });
                             }
-                        })
+                        });
                 }}
             >
                 Show
@@ -167,7 +168,7 @@ export const WithErrorCode: Story = {
                         {
                             code: '@SYS_ERR_500',
                             path: 'auth/sign',
-                        })
+                        });
                 }}
             >
                 Show
