@@ -3712,6 +3712,10 @@ framer-motion@11.11.8:
   dependencies:
     tslib "^2.4.0"
 
+"framer-motion@link:../node_modules/framer-motion":
+  version "0.0.0"
+  uid ""
+
 fresh@0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/fresh/-/fresh-0.5.2.tgz#3d8cadd90d976569fa835ab1f8e4b23a105605a7"
