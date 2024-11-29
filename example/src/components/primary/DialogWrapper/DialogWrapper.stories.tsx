@@ -119,6 +119,16 @@ export const WithCustomTitle: Story = {
 };
 
 
+export const WithHiddenStatusCode: Story = {
+    args: {
+        status: EStatus.info,
+        title: 'Upgrade',
+        isStatusIconVisible: false,
+        message: 'There is now a new version that can be upgraded.',
+    },
+};
+
+
 export const WithConfirmInput: Story = {
     args: {
         status: EStatus.confirm,

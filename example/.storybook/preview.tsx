@@ -43,7 +43,7 @@ const preview: Preview = {
                   }}
                   locale="en-US"
                   isDark
-                  isStatusIconVisible
+                  isStatusIconVisible={false}
                   renderButton={args => <Button
                       {...args}
                   />}
