@@ -50,6 +50,8 @@ interface IStatusShowArgs {
     code?: string,
     path?: string,
 
+    title?: string
+    isStatusIconVisible?: boolean,
     onSubmit?: TOnSubmit
     buttons?: IButton[],
     confirmPlaceholder?: string
@@ -73,7 +75,7 @@ export interface IDialogProps {
     id?: string
     isDark?: boolean
     className?: string
-    isVisibleStatusIcon?: boolean
+    isStatusIconVisible?: boolean
     renderButton?: (args: IButton) => ReactNode
     renderTextField?: <V extends string|number>(args: ITextField<V>) => ReactNode
     locale?: string

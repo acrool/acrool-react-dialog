@@ -23,7 +23,7 @@ const meta = {
     tags: ['autodocs'],
     argTypes: {},
     args: {
-        isVisibleStatusIcon: true,
+        isStatusIconVisible: true,
         status: EStatus.success,
         // onClick: fn(),
         message: 'Your profile save success',

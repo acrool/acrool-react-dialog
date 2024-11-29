@@ -17,7 +17,7 @@ interface IProps extends IDialogWrapperProps{
     renderButton?: (args: IButton) => ReactNode
     renderTextField?: <V extends string|number>(args: ITextField<V>) => ReactNode
     onSubmit?: TOnSubmit,
-    isVisibleStatusIcon?: boolean
+    isStatusIconVisible?: boolean
     locale?: string
     localeDictionaries?: ILocaleDictionaries
 }
@@ -28,7 +28,7 @@ interface IProps extends IDialogWrapperProps{
 const DialogWrapper = ({
     style,
     isDark,
-    isVisibleStatusIcon = true,
+    isStatusIconVisible = true,
     title,
     status,
     code,
@@ -188,7 +188,7 @@ const DialogWrapper = ({
         >
             {statusTheme && (
                 <div className={styles.headerWrapper}>
-                    {isVisibleStatusIcon && <statusTheme.icon/>}
+                    {isStatusIconVisible && <statusTheme.icon/>}
                     <span className={styles.title}>{title ?? i18n(`com.dialog.${statusTheme.titleI18n}`)}</span>
                 </div>
             )}
