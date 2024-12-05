@@ -50,7 +50,7 @@ interface IStatusShowArgs {
     code?: string,
     path?: string,
 
-    title?: string
+    title?: ReactNode,
     isStatusIconVisible?: boolean,
     onSubmit?: TOnSubmit
     buttons?: IButton[],
