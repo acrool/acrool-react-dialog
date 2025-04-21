@@ -24,7 +24,7 @@ export interface IButton {
 }
 
 export interface ITextField<V extends string|number> {
-    ref?: React.RefObject<HTMLInputElement>
+    ref?: React.RefObject<HTMLInputElement|null>
     className?: string
     defaultValue?: string
     placeholder?: string
