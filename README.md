@@ -20,6 +20,7 @@
 </div>
 
 
+`^1.1.0 support react >=18.0.0 <20.0.0`
 
 
 ## Features
@@ -32,14 +33,6 @@
 
 ```bash
 yarn add framer-motion @acrool/react-dialog
-```
-
-in your packages. (Make the version of styled-component you use match the version of styled-component used in acrool-react-gird)
-
-```json
-"resolutions": {
-    "framer-motion": "^11.x"
-}
 ```
 
 ## Usage

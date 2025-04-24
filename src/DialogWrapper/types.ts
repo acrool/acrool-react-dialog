@@ -8,7 +8,7 @@ export interface IDialogWrapperProps {
     code?: string,
     path?: string,
     status?: EStatus,
-    title?: string,
+    title?: ReactNode,
     message: ReactNode|string
     onSubmit?: TOnSubmit
     buttons?: IButton[]

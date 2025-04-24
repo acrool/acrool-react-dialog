@@ -96,7 +96,7 @@ class Dialog extends React.Component<IDialogProps, IState> {
             }}>
                 <DialogWrapper
                     isDark={this.typeProps.isDark}
-                    isVisibleStatusIcon={this.typeProps.isVisibleStatusIcon}
+                    isStatusIconVisible={this.typeProps.isStatusIconVisible}
                     renderButton={this.typeProps.renderButton}
                     renderTextField={this.typeProps.renderTextField}
                     locale={this.typeProps.locale}

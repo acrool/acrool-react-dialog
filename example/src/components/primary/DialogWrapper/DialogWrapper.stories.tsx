@@ -23,7 +23,7 @@ const meta = {
     tags: ['autodocs'],
     argTypes: {},
     args: {
-        isVisibleStatusIcon: true,
+        isStatusIconVisible: true,
         status: EStatus.success,
         // onClick: fn(),
         message: 'Your profile save success',
@@ -114,6 +114,16 @@ export const WithCustomTitle: Story = {
     args: {
         status: EStatus.info,
         title: 'Upgrade',
+        message: 'There is now a new version that can be upgraded.',
+    },
+};
+
+
+export const WithHiddenStatusCode: Story = {
+    args: {
+        status: EStatus.info,
+        title: 'Upgrade',
+        isStatusIconVisible: false,
         message: 'There is now a new version that can be upgraded.',
     },
 };
