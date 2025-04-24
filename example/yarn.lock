@@ -14,9 +14,16 @@
   dependencies:
     dayjs "^1.x"
 
-"@acrool/react-dialog@link:..":
-  version "0.0.0"
-  uid ""
+"@acrool/react-dialog@latest":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@acrool/react-dialog/-/react-dialog-1.1.0.tgz#a1a4d3fe4868b785e2e92ed94416addcd2b09ff6"
+  integrity sha512-f6m/EosTmQ0tm4w/TbbhP4pcuhqUxB/37GHbLCVN7UqQIPh0h1bN9oghqyklB2/LQjCFBfovK4Xz1zg5ZrEwNg==
+  dependencies:
+    "@acrool/js-logger" "^1.0.23"
+    "@acrool/react-portal" "^1.1.0"
+    clsx "^2.1.1"
+    framer-motion "12.7.4"
+    ulid "^2.3.0"
 
 "@acrool/react-grid@6.0.2":
   version "6.0.2"
@@ -2809,30 +2816,22 @@ react-docgen@^7.0.0:
     resolve "^1.22.1"
     strip-indent "^4.0.0"
 
-"react-dom@^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0":
+react-dom@19.1.0, "react-dom@^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0":
   version "19.1.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-19.1.0.tgz#133558deca37fa1d682708df8904b25186793623"
   integrity sha512-Xs1hdnE+DyKgeHJeJznQmYMIBG3TKIHJJT95Q58nHLSrElKlGQqDTR2HQ9fx5CN/Gk6Vh/kupBTDLU11/nDk/g==
   dependencies:
     scheduler "^0.26.0"
 
-"react-dom@link:../node_modules/react-dom":
-  version "0.0.0"
-  uid ""
-
 react-is@^17.0.1:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
-"react@^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0":
+react@19.1.0, "react@^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0":
   version "19.1.0"
   resolved "https://registry.yarnpkg.com/react/-/react-19.1.0.tgz#926864b6c48da7627f004795d6cce50e90793b75"
   integrity sha512-FS+XFBNvn3GTAWq26joslQgWNoFu08F4kl0J4CgdNKADkdSGXQyTCnKteIAJy96Br6YbpEU1LSzV5dYtjMkMDg==
-
-"react@link:../node_modules/react":
-  version "0.0.0"
-  uid ""
 
 readdirp@^4.0.1:
   version "4.1.2"
