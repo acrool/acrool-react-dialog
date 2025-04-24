@@ -2149,10 +2149,6 @@ framer-motion@12.7.4:
     motion-utils "^12.7.2"
     tslib "^2.4.0"
 
-"framer-motion@link:../node_modules/framer-motion":
-  version "0.0.0"
-  uid ""
-
 fsevents@~2.3.2, fsevents@~2.3.3:
   version "2.3.3"
   resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.3.3.tgz#cac6407785d03675a2a5e1a5305c697b347d90d6"
