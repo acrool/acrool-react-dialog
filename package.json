@@ -20,6 +20,7 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "browser": "./dist/acrool-react-dialog.es.js",
       "import": "./dist/acrool-react-dialog.es.js"
     },
@@ -53,8 +54,8 @@
   },
   "dependencies": {
     "framer-motion": "12.7.4",
-    "@acrool/js-logger": "^1.0.23",
-    "@acrool/react-portal": "^1.1.0",
+    "@acrool/js-logger": "^1.0.24",
+    "@acrool/react-portal": "^1.1.1",
     "clsx": "^2.1.1",
     "ulid": "^2.3.0"
   },
