@@ -65,7 +65,7 @@ interface TShowStatus {
     confirm: TStatusShow
 }
 
-export type TShowMulti = TShow & TShowStatus;
+export type TShowMulti = TShow & TShowStatus & { hide?: THide };
 
 export type THide = () => void;
 

@@ -184,7 +184,7 @@ const DialogWrapper = ({
         <div
             className={clsx(styles.dialogWrapper, statusTheme?.elClass, {[styles.darkTheme]: isDark})}
             style={style}
-            role="alert"
+            role="dialog"
         >
             {statusTheme && (
                 <div className={styles.headerWrapper}>

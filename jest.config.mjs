@@ -2,7 +2,7 @@ export default {
     coverageDirectory: 'coverage',
     preset: 'ts-jest',
     testEnvironment: 'jsdom',
-    testMatch: ['<rootDir>/**/*.test.ts?(x)'],
+    testMatch: ['<rootDir>/**/*.(spec|test).ts?(x)'],
     transform: {
         '^.+\\.(t|j)sx?$': [
             '@swc/jest',
@@ -24,7 +24,8 @@ export default {
 
     },
     transformIgnorePatterns: [
-        '/node_modules/(?!@acrool/react-portal)'
+        '/node_modules/(?!(@acrool/react-portal|@acrool/js-logger))'
+
     ],
     setupFilesAfterEnv: ['@testing-library/jest-dom'],
 };
