@@ -16,11 +16,11 @@ export type TButtonType = 'submit'|'button';
 
 export interface IButton {
     className?: string
-    children: ReactNode,
-    color?: TButtonColor,
-    onClick?: TOnButtonClick,
-    hotKey?: EKeyboardKey,
-    type?: TButtonType,
+    children: ReactNode
+    color?: TButtonColor
+    onClick?: TOnButtonClick
+    hotKey?: EKeyboardKey
+    type?: TButtonType
 }
 
 export interface ITextField<V extends string|number> {
@@ -42,27 +42,27 @@ export type TOnButtonClick = (e?: React.MouseEvent) => boolean|void|Promise<bool
 export type TOnSubmit = (confirmValue?: string) => boolean|void|Promise<boolean|void>;
 
 interface IShowArgs extends IStatusShowArgs{
-    status?: EStatus,
-    message: ReactNode,
+    status?: EStatus
+    message: ReactNode
 }
 
 interface IStatusShowArgs {
-    code?: string,
-    path?: string,
+    code?: string
+    path?: string
 
-    title?: ReactNode,
-    isStatusIconVisible?: boolean,
+    title?: ReactNode
+    isStatusIconVisible?: boolean
     onSubmit?: TOnSubmit
-    buttons?: IButton[],
+    buttons?: IButton[]
     confirmPlaceholder?: string
 }
 
 interface TShowStatus {
-    success: TStatusShow,
-    warning: TStatusShow,
-    info: TStatusShow,
-    error: TStatusShow,
-    confirm: TStatusShow,
+    success: TStatusShow
+    warning: TStatusShow
+    info: TStatusShow
+    error: TStatusShow
+    confirm: TStatusShow
 }
 
 export type TShowMulti = TShow & TShowStatus;

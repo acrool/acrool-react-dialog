@@ -27,7 +27,7 @@ const modalVariantsItem: Variants = {
 };
 
 interface IProps {
-    modalOptions?: IModalOptions,
+    modalOptions?: IModalOptions
     children: ReactNode
 }
 

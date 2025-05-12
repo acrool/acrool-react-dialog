@@ -8,10 +8,10 @@ import {EStatus, TButtonColor} from '../types';
 import styles from './dialog-wrapper.module.scss';
 
 interface IStatusConfig {
-    icon: FunctionComponent<SVGProps<SVGSVGElement> & { title?: string; }>,
-    titleI18n: string,
-    elClass: string,
-    mainBtnColor: TButtonColor,
+    icon: FunctionComponent<SVGProps<SVGSVGElement> & { title?: string }>
+    titleI18n: string
+    elClass: string
+    mainBtnColor: TButtonColor
 }
 
 

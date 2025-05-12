@@ -5,14 +5,14 @@ import {EStatus, IButton, TOnSubmit} from '../types';
 
 
 export interface IDialogWrapperProps {
-    code?: string,
-    path?: string,
-    status?: EStatus,
-    title?: ReactNode,
+    code?: string
+    path?: string
+    status?: EStatus
+    title?: ReactNode
     message: ReactNode|string
     onSubmit?: TOnSubmit
     buttons?: IButton[]
-    confirmPlaceholder?: string,
+    confirmPlaceholder?: string
     renderButton?: (args: IButton) => ReactNode
 }
 

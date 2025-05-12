@@ -16,7 +16,7 @@ interface IProps extends IDialogWrapperProps{
     isDark?: boolean
     renderButton?: (args: IButton) => ReactNode
     renderTextField?: <V extends string|number>(args: ITextField<V>) => ReactNode
-    onSubmit?: TOnSubmit,
+    onSubmit?: TOnSubmit
     isStatusIconVisible?: boolean
     locale?: string
     localeDictionaries?: ILocaleDictionaries

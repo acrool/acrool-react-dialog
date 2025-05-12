@@ -8,7 +8,7 @@ import styles from './action-button.module.scss';
 
 
 interface IProps{
-    style?: CSS.Properties,
+    style?: CSS.Properties
     args: IButton
     renderButton?: (args: IButton) => ReactNode
 }
