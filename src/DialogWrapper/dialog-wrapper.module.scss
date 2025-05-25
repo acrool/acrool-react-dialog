@@ -50,14 +50,20 @@
 
 
 
-.content{
+.content-wrapper{
   flex: 1;
-  text-align: center;
-  color: var(--dialog-wrapper-color);
   width: 100%;
-  font-size: 14px;
   padding: 10px 0;
+  display: flex;
+  justify-content: center;
+
+    .content{
+        text-align: left;
+        color: var(--dialog-wrapper-color);
+        font-size: 14px;
+    }
 }
+
 
 .status-success, .status-error, .status-info, .status-warning{
   color: var(--dialog-wrapper-color);

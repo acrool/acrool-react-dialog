@@ -155,9 +155,7 @@ const DialogWrapper = ({
      */
     const renderMessage = () => {
         if(typeof message === 'string'){
-            return <div className={styles.content}
-                dangerouslySetInnerHTML={{__html: message}}
-            />;
+            return <div className={styles.content} dangerouslySetInnerHTML={{__html: message}}/>;
         }
         return <div className={styles.content} children={message}/>;
     };
@@ -193,7 +191,9 @@ const DialogWrapper = ({
                 </div>
             )}
 
-            {renderMessage()}
+            <div className={styles.contentWrapper}>
+                {renderMessage()}
+            </div>
 
             {renderInfo()}
 
