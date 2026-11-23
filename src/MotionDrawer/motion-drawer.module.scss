@@ -5,7 +5,10 @@
     margin: 0 auto;
 
     position: fixed;
-    inset: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
@@ -16,12 +19,24 @@
 
     z-index: var(--dialog-portal-index, var(--default-portal-index));
 
+    // 離場中不可再被點擊
+    &[data-exiting] {
+        pointer-events: none;
+
+        .motion-mask-wrapper {
+            pointer-events: none;
+        }
+    }
+
 }
 
 .motion-mask-wrapper {
     background: rgba(0, 0, 0, 0.6);
     position: fixed;
-    inset: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 
     z-index: 0;
     pointer-events: auto;
