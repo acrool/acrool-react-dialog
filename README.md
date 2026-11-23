@@ -27,12 +27,12 @@
 
 - Supports 5 status colors: default, success, info, warning, danger
 - Call via global method
-- Plug and unplug using `@acrool/react-portal` and `framer-motion`
+- Plug and unplug using `@acrool/react-portal` and `motion`
 
 ## Install
 
 ```bash
-yarn add framer-motion @acrool/react-dialog
+yarn add motion @acrool/react-dialog
 ```
 
 ## Usage

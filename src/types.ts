@@ -1,4 +1,3 @@
-import {Transition, Variant} from 'framer-motion';
 import {ReactNode} from 'react';
 
 import {IDialogWrapperProps} from './DialogWrapper/types';
@@ -87,13 +86,34 @@ export interface IDialogProps {
 }
 
 
-type TVariantKey = 'initial'|'show'|'exit'
-export type TAnimationVariants = Record<TVariantKey, Variant>;
+/**
+ * 一段動畫 (進場或離場)
+ * keyframes 與 options 會直接交給 motion mini 的 animate (Web Animations API)
+ */
+export interface IModalAnimation {
+    keyframes: Record<string, string|number|Array<string|number>>
+    options?: {
+        /** 秒 */
+        duration?: number
+        /** 秒 */
+        delay?: number
+        /** 曲線名稱或 cubic-bezier 的四個數值 */
+        ease?: 'linear'|'easeIn'|'easeOut'|'easeInOut'|[number, number, number, number]
+    }
+}
+
+/**
+ * 內容區塊的進場、離場動畫
+ */
+export interface IModalMotion {
+    enter?: IModalAnimation
+    exit?: IModalAnimation
+}
 
 export interface IModalOptions {
-    variants?: TAnimationVariants
-    transition?: Transition
     className?: string
+    /** 自訂內容區塊的動畫，未提供時使用預設動畫 */
+    motion?: IModalMotion
 }
 
 
