@@ -1,20 +1,29 @@
 import {clsx} from 'clsx';
 import {usePresence} from 'motion/react';
 import {useAnimate} from 'motion/react-mini';
-import {ReactNode, useEffect, useRef} from 'react';
+import {ReactNode, useEffect, useLayoutEffect, useRef} from 'react';
 
 import {IModalMotion, IModalOptions} from '../types';
 import styles from './motion-drawer.module.scss';
 
 
 /**
+ * 在 client 用 useLayoutEffect，SSR 退回 useEffect 以免警告。
+ * 動畫必須在瀏覽器繪製之前啟動：用 useEffect 的話，彈窗會先以最終樣子畫出一格，
+ * 下一格才跳回起點開始進場，看起來會閃一下。
+ */
+const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
+
+
+/**
  * 預設動畫
  * 遮罩: 淡入、淡出
- * 內容: 進場由上方略為縮小處彈入，離場往上淡出
+ * 內容: 進場由上方略為縮小處彈入，離場略為縮小並往上快速淡出
  */
 const defaultMaskMotion: Required<IModalMotion> = {
     enter: {keyframes: {opacity: [0, 1]}, options: {duration: .3}},
-    exit: {keyframes: {opacity: 0}, options: {duration: .3}},
+    // 離場要比進場快，與內容同時結束
+    exit: {keyframes: {opacity: 0}, options: {duration: .18, ease: 'easeOut'}},
 };
 
 const defaultContentMotion: Required<IModalMotion> = {
@@ -24,8 +33,9 @@ const defaultContentMotion: Required<IModalMotion> = {
         options: {duration: .4, ease: [.22, 1.2, .36, 1]},
     },
     exit: {
-        keyframes: {opacity: 0, transform: 'translateY(-15px)'},
-        options: {duration: .3, ease: 'easeIn'},
+        // 短而且一開始就明顯變淡 (easeOut)：按下後立刻有反應，不拖尾
+        keyframes: {opacity: 0, transform: 'translateY(-8px) scale(.96)'},
+        options: {duration: .18, ease: 'easeOut'},
     },
 };
 
@@ -65,7 +75,11 @@ const MotionDrawer = ({
     const maskRef = useRef<HTMLDivElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
+    // 離場動畫結束時用來確認「是否仍在離場」：離場途中又進場的話，舊的離場不可以把節點移除
+    const isPresentRef = useRef(isPresent);
+    isPresentRef.current = isPresent;
+
+    useIsomorphicLayoutEffect(() => {
         const maskEl = maskRef.current;
         const contentEl = contentRef.current;
         const step = isPresent ? 'enter': 'exit';
@@ -86,7 +100,9 @@ const MotionDrawer = ({
             // 離場動畫播完才讓 AnimatePresence 移除節點；動畫被中斷時也要移除，避免節點殘留
             Promise.all(animations)
                 .catch(() => undefined)
-                .then(() => safeToRemove?.());
+                .then(() => {
+                    if(!isPresentRef.current) safeToRemove?.();
+                });
         }
     }, [isPresent]);
 

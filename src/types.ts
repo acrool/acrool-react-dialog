@@ -94,11 +94,11 @@ export interface IModalAnimation {
     keyframes: Record<string, string|number|Array<string|number>>
     options?: {
         /** 秒 */
-        duration?: number
+        duration?: number,
         /** 秒 */
-        delay?: number
+        delay?: number,
         /** 曲線名稱或 cubic-bezier 的四個數值 */
-        ease?: 'linear'|'easeIn'|'easeOut'|'easeInOut'|[number, number, number, number]
+        ease?: 'linear'|'easeIn'|'easeOut'|'easeInOut'|[number, number, number, number],
     }
 }
 
