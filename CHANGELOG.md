@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/acrool/acrool-react-dialog/compare/v1.1.4...v2.0.0) (2026-11-23)
+
+
+### ⚠ BREAKING CHANGES
+
+* modalOptions.variants and modalOptions.transition
+(framer-motion types) are removed. Use modalOptions.motion with
+enter/exit keyframes instead. The peer animation dependency is now
+motion instead of framer-motion.
+
+### Features
+
+* replace framer-motion with motion mini and externalize jsx-runtime ([d6fc756](https://github.com/acrool/acrool-react-dialog/commit/d6fc7568e463f6ff81df085b2d48eabd4b2e4dd1))
+
 ### [1.1.4](https://github.com/acrool/acrool-react-dialog/compare/v1.1.3...v1.1.4) (2025-05-25)
 
 ### [1.1.3](https://github.com/acrool/acrool-react-dialog/compare/v1.1.2...v1.1.3) (2025-05-12)
