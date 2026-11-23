@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.1](https://github.com/acrool/acrool-react-dialog/compare/v2.0.0...v2.0.1) (2026-11-23)
+
+
+### Bug Fixes
+
+* remove the one-frame flash on enter and make the exit faster ([bcf533c](https://github.com/acrool/acrool-react-dialog/commit/bcf533c71a72d288fa33fff892c21bf425604439))
+
 ## [2.0.0](https://github.com/acrool/acrool-react-dialog/compare/v1.1.4...v2.0.0) (2026-11-23)
 
 
