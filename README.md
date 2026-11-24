@@ -20,7 +20,9 @@
 </div>
 
 
-`^1.1.0 support react >=18.0.0 <20.0.0`
+`^2.0.0 support react >=18.0.0 <20.0.0, animation by motion (Web Animations API), no framer-motion`
+
+`^1.1.0 support react >=18.0.0 <20.0.0, framer-motion`
 
 
 ## Features
@@ -32,8 +34,10 @@
 ## Install
 
 ```bash
-yarn add motion @acrool/react-dialog
+yarn add @acrool/react-dialog
 ```
+
+> `motion` is installed as a dependency, nothing to add on your side. If your project also uses `motion`, keep a single copy (same major version) so the `AnimatePresence` context is shared.
 
 ## Usage
 
